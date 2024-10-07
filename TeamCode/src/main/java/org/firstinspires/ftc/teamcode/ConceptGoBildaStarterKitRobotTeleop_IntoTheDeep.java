@@ -70,6 +70,11 @@ import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 //@Disabled
 public class ConceptGoBildaStarterKitRobotTeleop_IntoTheDeep extends LinearOpMode {
 
+    public static final String LEFT_FRONT_DRIVE = "lfd";
+    public static final String RIGHT_FRONT_DRIVE = "rfd";
+    public static final String LEFT_ARM = "left_arm";
+    public static final String INTAKE = "intake";
+    public static final String WRIST = "wrist";
     /* Declare OpMode members. */
     public DcMotor  leftDrive   = null; //the left drivetrain motor
     public DcMotor  rightDrive  = null; //the right drivetrain motor
@@ -139,9 +144,9 @@ public class ConceptGoBildaStarterKitRobotTeleop_IntoTheDeep extends LinearOpMod
 
 
         /* Define and Initialize Motors */
-        leftDrive  = hardwareMap.get(DcMotor.class, "left_front_drive"); //the left drivetrain motor
-        rightDrive = hardwareMap.get(DcMotor.class, "right_front_drive"); //the right drivetrain motor
-        armMotor   = hardwareMap.get(DcMotor.class, "left_arm"); //the arm motor
+        leftDrive  = hardwareMap.get(DcMotor.class, LEFT_FRONT_DRIVE); //the left drivetrain motor
+        rightDrive = hardwareMap.get(DcMotor.class, RIGHT_FRONT_DRIVE); //the right drivetrain motor
+        armMotor   = hardwareMap.get(DcMotor.class, LEFT_ARM); //the arm motor
 
 
         /* Most skid-steer/differential drive robots require reversing one motor to drive forward.
@@ -170,8 +175,8 @@ public class ConceptGoBildaStarterKitRobotTeleop_IntoTheDeep extends LinearOpMod
 
 
         /* Define and initialize servos.*/
-        intake = hardwareMap.get(CRServo.class, "intake");
-        wrist  = hardwareMap.get(Servo.class, "wrist");
+        intake = hardwareMap.get(CRServo.class, INTAKE);
+        wrist  = hardwareMap.get(Servo.class, WRIST);
 
         /* Make sure that the intake is off, and the wrist is folded in. */
         intake.setPower(INTAKE_OFF);
