@@ -2,47 +2,24 @@
 
 [Connect Driver Hub to Controller Hub](#connect-driver-hub-to-controller-hub)
 
-d
+[Robot Device Map](#robot-device-map)
 
-d
-
-d
-
-d
-
-d
-
-d
-
-d
-
-d
-
-d
-
-d
-
-d
-
-d
-
-d
-
-d
-
-
-
-
+***
 
 ## Connect Driver Hub to Controller Hub
 
-;lakdjf;adkjf;lakjdf;lak
-l;lka;jkaf
+- Plug battery into robot controller and power up the robot controller.
+- Power *Driver Hub* on
+- Go to *FTC Driver Status*
+
+* Press the "three dots" icon
+- Settings
+  - Pair with Robot Controller
+    - Wi-Fi Settings
+      - FTC-1n36 (password is password)
 
 
-;lkadjf;lajf
-
-
+***
 ## Robot Device Map
 | Device  | Device Name | Port | Purpose                 |
 |---------|-------------|------|-------------------------|
