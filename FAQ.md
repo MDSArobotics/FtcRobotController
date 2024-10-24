@@ -1,12 +1,12 @@
 # FAQ
 
-[Connect Driver Hub to Controller Hub](#connect-driver-hub-to-controller-hub)
+[Connecting Driver Hub to Controller Hub](#connecting-driver-hub-to-controller-hub)
 
 [Robot Device Map](#robot-device-map)
 
 ***
 
-## Connect Driver Hub to Controller Hub
+## Connecting Driver Hub to Controller Hub
 
 - Plug battery into robot controller and power up the robot controller.
 - Power *Driver Hub* on
