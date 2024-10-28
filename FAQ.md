@@ -21,14 +21,14 @@
 
 ***
 ## Robot Device Map
-| Device  | Device Name | Port | Purpose                 |
-|---------|-------------|------|-------------------------|
-| DcMotor | left_motor  | 1    | Left side drive wheel   |
-| DcMotor | right_motor | 2    | Right side drive wheeel |
-| DcMotor | arm_motor   | 3    | Arm motor               |
-| CrServo | sweeper     | 4    | Sweeper actuator        |
-| Servo   | wrist       | 5    | Wrist motion controller |
-| Servo   | hand        | 6    | Hand  motion controller |
+| Class   | Device | Device Name | Port | Purpose                 |
+|---------|----|-------------|------|-------------------------|
+| DcMotor | GoBILDA5202/3/4 series | left_drive  | 1    | Left side drive wheel   |
+| DcMotor | GoBILDA5202/3/4 series | right_drive | 2    | Right side drive wheel |
+| DcMotor | | arm_motor   | 3    | Arm motor               |
+| CrServo | | sweeper     | 4    | Sweeper actuator        |
+| Servo   | | wrist       | 5    | Wrist motion controller |
+| Servo   | | hand        | 6    | Hand  motion controller |
 
 
 
