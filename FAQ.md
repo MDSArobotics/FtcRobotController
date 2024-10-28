@@ -28,6 +28,7 @@
 | DcMotor | arm_motor   | 3    | Arm motor               |
 | CrServo | sweeper     | 4    | Sweeper actuator        |
 | Servo   | wrist       | 5    | Wrist motion controller |
+| Servo   | hand        | 6    | Hand  motion controller |
 
 
 
