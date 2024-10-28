@@ -28,8 +28,12 @@
  */
 
 package org.firstinspires.ftc.robotcontroller.external.samples;
-
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+//import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.Range;
+//import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -50,14 +54,15 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Basic: Linear OpMode", group="Linear OpMode")
-@Disabled
+@TeleOp(name="Arm Movement", group="Linear OpMode")
+//@Disabled
 public class BasicOpMode_Linear extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
+    private DcMotor arm = null;
 
     @Override
     public void runOpMode() {
@@ -67,14 +72,16 @@ public class BasicOpMode_Linear extends LinearOpMode {
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
-        leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
+        leftDrive = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
+        arm = hardwareMap.get(DcMotor.class, "arm");
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
         leftDrive.setDirection(DcMotor.Direction.REVERSE);
         rightDrive.setDirection(DcMotor.Direction.FORWARD);
+        arm.setDirection(DcMotor.Direction.REVERSE);
 
         // Wait for the game to start (driver presses START)
         waitForStart();
@@ -86,6 +93,7 @@ public class BasicOpMode_Linear extends LinearOpMode {
             // Setup a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
+            double armPower;
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -93,9 +101,12 @@ public class BasicOpMode_Linear extends LinearOpMode {
             // POV Mode uses left stick to go forward, and right stick to turn.
             // - This uses basic math to combine motions and is easier to drive straight.
             double drive = -gamepad1.left_stick_y;
-            double turn  =  gamepad1.right_stick_x;
-            leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
-            rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
+            double turn = gamepad1.right_stick_x;
+            double armRotate = gamepad2.left_stick_y;
+
+            leftPower = Range.clip(drive + turn, -1.0, 1.0);
+            rightPower = Range.clip(drive - turn, -1.0, 1.0);
+            armPower = Range.clip(armRotate, -.3, .3);
 
             // Tank Mode uses one stick to control each wheel.
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
@@ -105,6 +116,7 @@ public class BasicOpMode_Linear extends LinearOpMode {
             // Send calculated power to wheels
             leftDrive.setPower(leftPower);
             rightDrive.setPower(rightPower);
+            arm.setPower(armPower);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
@@ -112,4 +124,77 @@ public class BasicOpMode_Linear extends LinearOpMode {
             telemetry.update();
         }
     }
-}
+
+//private class ConceptExternalHardwareClass extends LinearOpMode {
+//
+//    // Create a RobotHardware object to be used to access robot hardware.
+//    // Prefix any hardware functions with "robot." to access this class.
+//    RobotHardware   robot       = new RobotHardware(this);
+//
+//    @Override
+//    public void runOpMode() {
+//        double drive        = 0;
+//        double turn         = 0;
+//        double arm          = 0;
+//        double handOffset   = 0;
+//
+//        // initialize all the hardware, using the hardware class. See how clean and simple this is?
+//        robot.init();
+//
+//        // Send telemetry message to signify robot waiting;
+//        // Wait for the game to start (driver presses PLAY)
+//        waitForStart();
+//
+//        // run until the end of the match (driver presses STOP)
+//        while (opModeIsActive()) {
+//
+//            // Run wheels in POV mode (note: The joystick goes negative when pushed forward, so negate it)
+//            // In this mode the Left stick moves the robot fwd and back, the Right stick turns left and right.
+//            // This way it's also easy to just drive straight, or just turn.
+//            drive = -gamepad1.left_stick_y;
+//            turn  =  gamepad1.right_stick_x;
+//
+//            // Combine drive and turn for blended motion. Use RobotHardware class
+//            robot.driveRobot(drive, turn);
+//
+//            // Use gamepad left & right Bumpers to open and close the claw
+//            // Use the SERVO constants defined in RobotHardware class.
+//            // Each time around the loop, the servos will move by a small amount.
+//            // Limit the total offset to half of the full travel range
+//            if (gamepad1.right_bumper)
+//                handOffset += robot.HAND_SPEED;
+//            else if (gamepad1.left_bumper)
+//                handOffset -= robot.HAND_SPEED;
+//            handOffset = Range.clip(handOffset, -0.5, 0.5);
+//
+//            // Move both servos to new position.  Use RobotHardware class
+//            robot.setHandPositions(handOffset);
+//
+//            // Use gamepad buttons to move arm up (Y) and down (A)
+//            // Use the MOTOR constants defined in RobotHardware class.
+//            if (gamepad1.y)
+//                arm = robot.ARM_UP_POWER;
+//            else if (gamepad1.a)
+//                arm = robot.ARM_DOWN_POWER;
+//            else
+//                arm = 0;
+//
+//            robot.setArmPower(arm);
+//
+//            // Send telemetry messages to explain controls and show robot status
+//            telemetry.addData("Drive", "Left Stick");
+//            telemetry.addData("Turn", "Right Stick");
+//            telemetry.addData("Arm Up/Down", "Y & A Buttons");
+//            telemetry.addData("Hand Open/Closed", "Left and Right Bumpers");
+//            telemetry.addData("-", "-------");
+//
+//            telemetry.addData("Drive Power", "%.2f", drive);
+//            telemetry.addData("Turn Power",  "%.2f", turn);
+//            telemetry.addData("Arm Power",  "%.2f", arm);
+//            telemetry.addData("Hand Position",  "Offset = %.2f", handOffset);
+//            telemetry.update();
+//
+//            // Pace this loop so hands move at a reasonable speed.
+//            sleep(50);
+//        }
+    }
