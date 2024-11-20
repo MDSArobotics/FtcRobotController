@@ -31,10 +31,12 @@ package org.firstinspires.ftc.robotcontroller.external.samples;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.DcMotorController;
 
 /*
  * This file contains an example of an iterative (Non-Linear) "OpMode".
@@ -50,8 +52,7 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Basic: Iterative OpMode", group="Iterative OpMode")
-@Disabled
+
 public class BasicOpMode_Iterative extends OpMode
 {
     // Declare OpMode members.
@@ -62,6 +63,32 @@ public class BasicOpMode_Iterative extends OpMode
     /*
      * Code to run ONCE when the driver hits INIT
      */
+
+    DcMotor motorLeft = hardwareMap.dcMotor.get("motorLeft");
+    DcMotor motorRight = hardwareMap.dcMotor.get("motorRight");
+    Servo claw = hardwareMap.servo.get("servo_1");
+    DcMotor motorArm = hardwareMap.dcMotor.get("motorArm");
+
+    public void moveForward() { //maybe move forward? scrapbooked from https://github.com/cfahlgren1/FTC-Sample-Autonomous-Mode/blob/master/NewAMode.java
+        for (int moveForward = 0; moveForward < 6000; moveForward++) {  //6 seconds?
+            motorLeft.setPower(0.5);
+            motorRight.setPower(0.5);
+        }
+
+        motorLeft.setPower(0);
+        motorRight.setPower(0);
+    }
+
+    public void moveReverse() {   //(hopefully. copy pasted from above & switched to negative)
+        for (int moveBackward = 0; moveBackward < 6000; moveBackward++) {
+            motorLeft.setPower(-0.5);
+            motorRight.setPower(-0.5);
+        }
+
+        motorLeft.setPower(0);
+        motorRight.setPower(0);
+    }
+
     @Override
     public void init() {
         telemetry.addData("Status", "Initialized");
