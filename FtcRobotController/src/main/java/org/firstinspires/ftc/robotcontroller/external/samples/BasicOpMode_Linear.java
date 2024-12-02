@@ -67,6 +67,7 @@ public class BasicOpMode_Linear extends LinearOpMode {
     private DcMotor rightDrive = null;
     private DcMotor arm = null;
     private Servo wrist = null;
+    private Servo intake = null;
 
     @Override
     public void runOpMode() {
@@ -80,6 +81,7 @@ public class BasicOpMode_Linear extends LinearOpMode {
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
         arm = hardwareMap.get(DcMotor.class, "arm");
         wrist = hardwareMap.get(Servo.class, "wrist");
+        intake = hardwareMap.get(Servo.class, "intake");
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
@@ -100,7 +102,6 @@ public class BasicOpMode_Linear extends LinearOpMode {
             double leftPower;
             double rightPower;
             double armPower;
-            double tgtPower = 0;
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -108,12 +109,12 @@ public class BasicOpMode_Linear extends LinearOpMode {
             // POV Mode uses left stick to go forward, and right stick to turn.
             // - This uses basic math to combine motions and is easier to drive straight.
             double drive = -gamepad1.left_stick_y;
-            double turn = gamepad1.right_stick_x;
-            double armRotate = gamepad2.left_stick_y;
+            double turn = -gamepad1.right_stick_x;
+            double armRotate = -gamepad2.right_stick_y;
 
             leftPower = Range.clip(drive + turn, -1.0, 1.0);
             rightPower = Range.clip(drive - turn, -1.0, 1.0);
-            armPower = Range.clip(armRotate, -.5, .5);
+            armPower = Range.clip(armRotate, -1.0, 1.0);
 
 
             // Send calculated power to wheels
@@ -123,21 +124,30 @@ public class BasicOpMode_Linear extends LinearOpMode {
 
 
             // check to see if we need to move the servo.
-            if(gamepad2.x) {
+            if(gamepad2.left_stick_x<0) {
                 // move to 0 degrees.
-                wrist.setPosition(0.0);
+                wrist.setPosition(1.0);
                 telemetry.addData("button x pressed", true);
                 telemetry.update();
-            } else if (gamepad2.a) {
+            } else if (gamepad2.left_stick_x==0) {
                 // move to 90 degrees.
-                wrist.setPosition(0.5);
+                wrist.setPosition(0.3);
                 telemetry.addData("button a pressed", true);
                 telemetry.update();
-            } else if (gamepad2.b) {
+            } else if (gamepad2.left_stick_x>0) {
                 // move to 180 degrees.
-                wrist.setPosition(1.0);
+                wrist.setPosition(0);
                 telemetry.addData("button b pressed", true);
                 telemetry.update();
+            }
+
+            if (gamepad2.y)
+            {
+                intake.setPosition(0);
+            }
+            else if (gamepad2.a)
+            {
+                intake.setPosition(1.0);
             }
 
 //            //code for CRSERVO
