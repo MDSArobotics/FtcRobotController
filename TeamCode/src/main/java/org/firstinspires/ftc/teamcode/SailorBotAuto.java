@@ -36,6 +36,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.SortedSet;
+
 /*
  * This OpMode illustrates the concept of driving a path based on encoder counts.
  * The code is structured as a LinearOpMode
@@ -63,7 +67,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @Autonomous(name="SailorBot Auto", group="Robot")
-public class RobotAutoDriveByEncoder_Linear extends LinearOpMode {
+public class SailorBotAuto extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -194,8 +198,9 @@ public class RobotAutoDriveByEncoder_Linear extends LinearOpMode {
     Gets all the device names from the hardware map and displays them on the driver hub
      */
     public void showAttachedDevices() {
-        List<HardwareDevice> hwDevList = hardwareMap.getAllNames();
-        for (HardwareDevice hd : hwDevList) {
+        Iterator<HardwareDevice> hwDevList = hardwareMap.iterator();
+        for (Iterator<HardwareDevice> it = hwDevList; it.hasNext(); ) {
+            HardwareDevice hd = it.next();
             telemetry.addData("Found", hd.getDeviceName());
         }
         telemetry.update();
