@@ -189,8 +189,7 @@ public class RobotAutoDriveByEncoder_Linear extends LinearOpMode {
 //            rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 //
 //            sleep(250);   // optional pause after each move.
-        }
-    }
+
     /*
     Gets all the device names from the hardware map and displays them on the driver hub
      */
