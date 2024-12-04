@@ -72,6 +72,7 @@ public class SailorBotAuto extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         showAttachedDevices();
+        moveRightMotor();
     }
 
 
@@ -204,6 +205,42 @@ public class SailorBotAuto extends LinearOpMode {
             telemetry.addData("Found", hd.getDeviceName());
         }
         telemetry.update();
-        sleep(3000);
+        sleep(5000);
     }
+
+    private void moveRightMotor()
+    {
+        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_drive");
+        int currentPosition = rightMotor.getCurrentPosition();
+        final int MOTOR_MAX_TICK = 28;
+
+        telemetry.addData("Current Position is: ", currentPosition);
+        telemetry.update();
+        sleep(5000);
+
+        rightMotor.setPower(.2);
+
+        if (currentPosition != 0)
+        {
+            telemetry.addData("Current Position is not equal to 0. Setting target position to ", MOTOR_MAX_TICK);
+            telemetry.update();
+            sleep(5000);
+            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
+
+            telemetry.addData("Setting target position to ", currentPosition);
+            telemetry.update();
+            sleep(5000);
+            rightMotor.setTargetPosition(currentPosition);
+        }
+        else
+        {
+            telemetry.addData("Current Position is equal to 0. Setting target position to ", MOTOR_MAX_TICK);
+            telemetry.update();
+            sleep(5000);
+            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
+        }
+
+
+    }
+
 }
