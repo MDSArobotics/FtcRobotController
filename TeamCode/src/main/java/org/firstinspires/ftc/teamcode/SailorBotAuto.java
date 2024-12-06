@@ -75,7 +75,7 @@ public class SailorBotAuto extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 //        showAttachedDevices();
 //        moveRightMotor();
-        parkRobot();
+//        parkRobot();
     }
 
     private void parkRobot()
@@ -96,28 +96,28 @@ public class SailorBotAuto extends LinearOpMode {
     {
 //        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
 
-        int tick_Distance = 224;
+        int tick_Distance = 4304;
         int cumTicks = 0;
         int currentPosition = rightMotor.getCurrentPosition();
-        int MOTOR_MAX_TICK = 28;
+        int MOTOR_MAX_TICK = 538;
         int MOTOR_MIN_TICK = 1;
         if(currentPosition != 1)
         {
             // move from current position to the end of a wheel rotation
             tellMe("Current position is: ", currentPosition);
             rightMotor.getCurrentPosition();
-            rightMotor.setTargetPosition(28);
+            rightMotor.setTargetPosition(538);
             //left motor movement = cumticks
             cumTicks += MOTOR_MAX_TICK - currentPosition;
             int leftMotorTicks = cumTicks;
         }
-        while((tick_Distance - cumTicks) <= 28)
+        while((tick_Distance - cumTicks) <= 538)
         {
             // preform full wheel rotations until there is less than one rotation remaining
             tellMe("Current position is: ", currentPosition);
             rightMotor.setTargetPosition(MOTOR_MAX_TICK / 2);
             rightMotor.setTargetPosition(MOTOR_MAX_TICK);
-            cumTicks += 28;
+            cumTicks += 538;
         }
         // move remaining distance
 
@@ -146,7 +146,7 @@ public class SailorBotAuto extends LinearOpMode {
     {
 //        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
         int currentPosition = rightMotor.getCurrentPosition();
-        final int MOTOR_MAX_TICK = 28;
+        final int MOTOR_MAX_TICK = 538;
 
         telemetry.addData("Current Position is: ", currentPosition);
         telemetry.update();
