@@ -153,8 +153,8 @@ public class RobotAutoDriveByEncoder_Linear extends LinearOpMode {
 
             // reset the timeout time and start motion.
             runtime.reset();
-            leftDrive.setPower(Math.abs(speed));
-            rightDrive.setPower(Math.abs(speed));
+            leftDrive.setPower(.3);
+            rightDrive.setPower(.3);
 
             // keep looping while we are still active, and there is time left, and both motors are running.
             // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
