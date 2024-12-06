@@ -100,7 +100,7 @@ public class SailorBotAuto extends LinearOpMode {
 
     private void moving()
     {
-        tellMe("Advancing to ", currentPosition);
+
         rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         int tick_Distance = 4304;
@@ -108,7 +108,7 @@ public class SailorBotAuto extends LinearOpMode {
         int MOTOR_MAX_TICK = 538;
         rightMotor.setTargetPosition(538);
 
-        tellMe("Advancing to ", currentPosition);
+
         leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftMotor.setPower(0.5);
