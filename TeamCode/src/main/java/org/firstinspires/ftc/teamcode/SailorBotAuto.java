@@ -33,6 +33,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -100,6 +101,7 @@ public class SailorBotAuto extends LinearOpMode {
     private void moving()
     {
         tellMe("Advancing to ", currentPosition);
+        rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         int tick_Distance = 4304;
         rightMotor.setPower(0.5);
@@ -107,6 +109,7 @@ public class SailorBotAuto extends LinearOpMode {
         rightMotor.setTargetPosition(538);
 
         tellMe("Advancing to ", currentPosition);
+        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftMotor.setPower(0.5);
         leftMotor.setTargetPosition(538);
