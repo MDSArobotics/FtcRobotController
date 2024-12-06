@@ -68,11 +68,14 @@ import java.util.SortedSet;
 
 @Autonomous(name="SailorBot Auto", group="Robot")
 public class SailorBotAuto extends LinearOpMode {
-    DcMotor rightMotor = (DcMotor) hardwareMap.get(DcMotor.class,"right_motor");
-    DcMotor leftMotor = (DcMotor) hardwareMap.get(DcMotor.class,"left_motor");
+    private DcMotor rightMotor = null;
+    private DcMotor leftMotor = null;
+
 
     @Override
     public void runOpMode() throws InterruptedException {
+        rightMotor = hardwareMap.get(DcMotor.class,"right_motor");
+        leftMotor = hardwareMap.get(DcMotor.class,"left_motor");
 //        showAttachedDevices();
           moveRightMotor();
 //        parkRobot();
