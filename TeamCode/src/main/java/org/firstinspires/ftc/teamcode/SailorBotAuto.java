@@ -71,8 +71,63 @@ public class SailorBotAuto extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        showAttachedDevices();
-        moveRightMotor();
+//        showAttachedDevices();
+//        moveRightMotor();
+    }
+
+    private void parkRobot()
+    {
+        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_drive");
+        rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightMotor.setPower(1.0);
+        int currentPosition = rightMotor.getCurrentPosition();
+        tellMe("Current position is: ", currentPosition);
+        for(int i=1; i<50; i++)
+        {
+            tellMe("Advancing to ", currentPosition);
+            rightMotor.setTargetPosition(currentPosition + i);
+        }
+    }
+
+    private void tellMe(String caption, int currentPosition) {
+        telemetry.addData(caption, currentPosition);
+        telemetry.update();
+        sleep(2000);
+    }
+
+    private void moveRightMotor()
+    {
+        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_drive");
+        int currentPosition = rightMotor.getCurrentPosition();
+        final int MOTOR_MAX_TICK = 28;
+
+        telemetry.addData("Current Position is: ", currentPosition);
+        telemetry.update();
+        sleep(5000);
+
+        rightMotor.setPower(.2);
+
+        if (currentPosition != 0)
+        {
+            telemetry.addData("Current Position is not equal to 0. Setting target position to ", MOTOR_MAX_TICK);
+            telemetry.update();
+            sleep(5000);
+            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
+
+            telemetry.addData("Setting target position to ", currentPosition);
+            telemetry.update();
+            sleep(5000);
+            rightMotor.setTargetPosition(currentPosition);
+        }
+        else
+        {
+            telemetry.addData("Current Position is equal to 0. Setting target position to ", MOTOR_MAX_TICK);
+            telemetry.update();
+            sleep(5000);
+            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
+        }
+
+
     }
 
 
@@ -208,39 +263,6 @@ public class SailorBotAuto extends LinearOpMode {
         sleep(5000);
     }
 
-    private void moveRightMotor()
-    {
-        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_drive");
-        int currentPosition = rightMotor.getCurrentPosition();
-        final int MOTOR_MAX_TICK = 28;
 
-        telemetry.addData("Current Position is: ", currentPosition);
-        telemetry.update();
-        sleep(5000);
-
-        rightMotor.setPower(.2);
-
-        if (currentPosition != 0)
-        {
-            telemetry.addData("Current Position is not equal to 0. Setting target position to ", MOTOR_MAX_TICK);
-            telemetry.update();
-            sleep(5000);
-            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
-
-            telemetry.addData("Setting target position to ", currentPosition);
-            telemetry.update();
-            sleep(5000);
-            rightMotor.setTargetPosition(currentPosition);
-        }
-        else
-        {
-            telemetry.addData("Current Position is equal to 0. Setting target position to ", MOTOR_MAX_TICK);
-            telemetry.update();
-            sleep(5000);
-            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
-        }
-
-
-    }
 
 }
