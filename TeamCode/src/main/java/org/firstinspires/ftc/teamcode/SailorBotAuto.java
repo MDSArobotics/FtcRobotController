@@ -155,7 +155,7 @@ public class SailorBotAuto extends LinearOpMode {
         telemetry.update();
         sleep(5000);
 
-        rightMotor.setPower(.0);
+        rightMotor.setPower(1.0);
 
         if (currentPosition != 0)
         {
