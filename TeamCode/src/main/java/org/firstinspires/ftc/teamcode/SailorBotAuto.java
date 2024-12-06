@@ -84,6 +84,11 @@ public class SailorBotAuto extends LinearOpMode {
         moving();
     }
 
+    @Override
+    public void waitForStart() {
+        super.waitForStart();
+    }
+
     private void parkRobot()
     {
 //        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
