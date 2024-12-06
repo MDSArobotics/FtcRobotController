@@ -68,16 +68,19 @@ import java.util.SortedSet;
 
 @Autonomous(name="SailorBot Auto", group="Robot")
 public class SailorBotAuto extends LinearOpMode {
+    DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
+    DcMotor leftMotor = (DcMotor) hardwareMap.get("left_motor");
 
     @Override
     public void runOpMode() throws InterruptedException {
 //        showAttachedDevices();
 //        moveRightMotor();
+        parkRobot();
     }
 
     private void parkRobot()
     {
-        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_drive");
+//        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
         rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightMotor.setPower(1.0);
         int currentPosition = rightMotor.getCurrentPosition();
@@ -89,6 +92,50 @@ public class SailorBotAuto extends LinearOpMode {
         }
     }
 
+    private void moveIncrementally()
+    {
+//        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
+
+        int tick_Distance = 224;
+        int cumTicks = 0;
+        int currentPosition = rightMotor.getCurrentPosition();
+        int MOTOR_MAX_TICK = 28;
+        int MOTOR_MIN_TICK = 1;
+        if(currentPosition != 1)
+        {
+            // move from current position to the end of a wheel rotation
+            tellMe("Current position is: ", currentPosition);
+            rightMotor.getCurrentPosition();
+            rightMotor.setTargetPosition(28);
+            //left motor movement = cumticks
+            cumTicks += MOTOR_MAX_TICK - currentPosition;
+            int leftMotorTicks = cumTicks;
+        }
+        while((tick_Distance - cumTicks) <= 28)
+        {
+            // preform full wheel rotations until there is less than one rotation remaining
+            tellMe("Current position is: ", currentPosition);
+            rightMotor.setTargetPosition(MOTOR_MAX_TICK / 2);
+            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
+            cumTicks += 28;
+        }
+        // move remaining distance
+
+        if((tick_Distance - cumTicks) != 0)
+        {
+            tellMe("Current position is: ", currentPosition);
+            rightMotor.setTargetPosition(tick_Distance - cumTicks);
+        }
+        double leftCurrentPos = leftMotor.getCurrentPosition();
+
+        if (leftCurrentPos + MOTOR_MAX_TICK > 538)
+        {
+            double leftMotorPartialTicks = leftCurrentPos + MOTOR_MAX_TICK;
+
+        }
+
+    }
+
     private void tellMe(String caption, int currentPosition) {
         telemetry.addData(caption, currentPosition);
         telemetry.update();
@@ -97,7 +144,7 @@ public class SailorBotAuto extends LinearOpMode {
 
     private void moveRightMotor()
     {
-        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_drive");
+//        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
         int currentPosition = rightMotor.getCurrentPosition();
         final int MOTOR_MAX_TICK = 28;
 
