@@ -79,10 +79,10 @@ public class SailorBotAuto extends LinearOpMode {
         rightMotor = hardwareMap.get(DcMotor.class,"right_drive");
         leftMotor = hardwareMap.get(DcMotor.class,"left_drive");
 //        showAttachedDevices();
-       //   moveRightMotor();
+          moveRightMotor();
 //        parkRobot();
        // moveIncrementally();
-        moving();
+       // moving();
     }
 
     @Override
@@ -181,7 +181,7 @@ public class SailorBotAuto extends LinearOpMode {
         telemetry.update();
         sleep(5000);
 
-        rightMotor.setPower(1.0);
+        rightMotor.setPower(.3);
 
         if (currentPosition != 0)
         {
