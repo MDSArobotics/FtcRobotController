@@ -79,7 +79,8 @@ public class SailorBotAuto extends LinearOpMode {
 //        showAttachedDevices();
        //   moveRightMotor();
 //        parkRobot();
-        moveIncrementally();
+       // moveIncrementally();
+        moving();
     }
 
     private void parkRobot()
@@ -96,11 +97,26 @@ public class SailorBotAuto extends LinearOpMode {
         }
     }
 
+    private void moving()
+    {
+        tellMe("Advancing to ", currentPosition);
+        rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        int tick_Distance = 4304;
+        rightMotor.setPower(0.5);
+        int MOTOR_MAX_TICK = 538;
+        rightMotor.setTargetPosition(538);
+
+        tellMe("Advancing to ", currentPosition);
+        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftMotor.setPower(0.5);
+        leftMotor.setTargetPosition(538);
+    }
     private void moveIncrementally()
     {
 //        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
 
         int tick_Distance = 4304;
+        rightMotor.setPower(1.0);
         int cumTicks = 0;
         int currentPosition = rightMotor.getCurrentPosition();
         int MOTOR_MAX_TICK = 538;
