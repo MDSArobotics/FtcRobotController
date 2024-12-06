@@ -74,7 +74,7 @@ public class SailorBotAuto extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 //        showAttachedDevices();
-//        moveRightMotor();
+          moveRightMotor();
 //        parkRobot();
     }
 
