@@ -77,8 +77,9 @@ public class SailorBotAuto extends LinearOpMode {
         rightMotor = hardwareMap.get(DcMotor.class,"right_drive");
         leftMotor = hardwareMap.get(DcMotor.class,"left_drive");
 //        showAttachedDevices();
-          moveRightMotor();
+       //   moveRightMotor();
 //        parkRobot();
+        moveIncrementally();
     }
 
     private void parkRobot()
