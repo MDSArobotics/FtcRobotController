@@ -74,8 +74,8 @@ public class SailorBotAuto extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        rightMotor = hardwareMap.get(DcMotor.class,"right_motor");
-        leftMotor = hardwareMap.get(DcMotor.class,"left_motor");
+        rightMotor = hardwareMap.get(DcMotor.class,"right_drive");
+        leftMotor = hardwareMap.get(DcMotor.class,"left_drive");
 //        showAttachedDevices();
           moveRightMotor();
 //        parkRobot();
