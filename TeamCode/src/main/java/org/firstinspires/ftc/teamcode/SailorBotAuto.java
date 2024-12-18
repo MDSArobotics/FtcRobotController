@@ -106,19 +106,26 @@ public class SailorBotAuto extends LinearOpMode {
 
     private void moving()
     {
-
-        rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-        rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        int tick_Distance = 4304;
-        rightMotor.setPower(0.5);
-        int MOTOR_MAX_TICK = 538;
-        rightMotor.setTargetPosition(538);
+    int h =1;
+        while (h <= 85)
+        {
 
 
-        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftMotor.setPower(0.5);
-        leftMotor.setTargetPosition(538);
+            rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+//       rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            int tick_Distance = 4304;
+            rightMotor.setPower(0.5);
+            int MOTOR_MAX_TICK = 538;
+            rightMotor.setTargetPosition(tick_Distance);
+
+
+            leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+//        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            leftMotor.setPower(0.5);
+            leftMotor.setTargetPosition(tick_Distance);
+
+            h++;
+        }
     }
     private void moveIncrementally()
     {
