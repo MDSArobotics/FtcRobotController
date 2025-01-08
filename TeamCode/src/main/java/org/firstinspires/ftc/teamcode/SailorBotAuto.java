@@ -131,7 +131,7 @@ public class SailorBotAuto extends LinearOpMode {
     private void rightTurn()
     {
         int h =1;
-        while (h <= 215)
+        while (h <= 212)
         {
 
 
