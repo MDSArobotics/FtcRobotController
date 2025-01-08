@@ -131,14 +131,14 @@ public class SailorBotAuto extends LinearOpMode {
     private void rightTurn()
     {
         int h =1;
-        while (h <= 212)
+        while (h <= 125)
         {
 
 
             rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 //       rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             int tick_Distance = 4304;
-            rightMotor.setPower(0.5);
+            rightMotor.setPower(1);
             int MOTOR_MAX_TICK = 538;
             rightMotor.setTargetPosition(tick_Distance);
 
