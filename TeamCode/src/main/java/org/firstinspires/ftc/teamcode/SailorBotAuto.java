@@ -82,8 +82,8 @@ public class SailorBotAuto extends LinearOpMode {
           //moveRightMotor();
 //        parkRobot();
        // moveIncrementally();
-        //moving();
-        rightTurn();
+        moving();
+       // rightTurn();
     }
 
     @Override
