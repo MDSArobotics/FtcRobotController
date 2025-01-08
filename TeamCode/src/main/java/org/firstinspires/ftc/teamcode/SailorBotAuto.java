@@ -108,7 +108,7 @@ public class SailorBotAuto extends LinearOpMode {
     private void moving()
     {
     int h =1;
-        while (h <= 85)
+        while (h <= 204) // 85 or 84 is the rough estimate of tick per rotation
         {
 
 
@@ -131,7 +131,7 @@ public class SailorBotAuto extends LinearOpMode {
     private void rightTurn()
     {
         int h =1;
-        while (h <= 125)
+        while (h <= 118)
         {
 
 
