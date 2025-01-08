@@ -82,7 +82,8 @@ public class SailorBotAuto extends LinearOpMode {
           //moveRightMotor();
 //        parkRobot();
        // moveIncrementally();
-        moving();
+        //moving();
+        rightTurn();
     }
 
     @Override
@@ -120,6 +121,29 @@ public class SailorBotAuto extends LinearOpMode {
 
 
             leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+//        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            leftMotor.setPower(0.5);
+            leftMotor.setTargetPosition(tick_Distance);
+
+            h++;
+        }
+    }
+    private void rightTurn()
+    {
+        int h =1;
+        while (h <= 85)
+        {
+
+
+            rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+//       rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            int tick_Distance = 4304;
+            rightMotor.setPower(0.5);
+            int MOTOR_MAX_TICK = 538;
+            rightMotor.setTargetPosition(tick_Distance);
+
+
+            leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 //        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             leftMotor.setPower(0.5);
             leftMotor.setTargetPosition(tick_Distance);
