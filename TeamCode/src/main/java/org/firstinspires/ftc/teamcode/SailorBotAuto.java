@@ -110,7 +110,8 @@ public class SailorBotAuto extends LinearOpMode {
     int h =1;
         while (h <= 204) // 85 or 84 is the rough estimate of tick per rotation
         {
-
+            // this is the forward moving method
+            //not the backward. do not mix it up
 
             rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 //       rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
