@@ -82,8 +82,9 @@ public class SailorBotAuto extends LinearOpMode {
           //moveRightMotor();
 //        parkRobot();
        // moveIncrementally();
-        moving();
+        //moving();
        // rightTurn();
+        encoderMover();
     }
 
     @Override
@@ -237,7 +238,10 @@ public class SailorBotAuto extends LinearOpMode {
 
 
     }
-
+    public void encoderMover()
+    {
+        encoderDrive(DRIVE_SPEED, 48, 48, 5.0);
+    }
 
 //
 //    /* Declare OpMode members. */
