@@ -109,14 +109,14 @@ public class SailorBotAuto extends LinearOpMode {
     private void moving()
     {
     int h =1;
-        while (h <= 102) // 85 or 84 is the rough estimate of tick per rotation //204
+        while (h <= 204) // 85 or 84 is the rough estimate of tick per rotation //204
         {
             // this is the forward moving method
             //not the backward. do not mix it up
 
             rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 //       rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            int tick_Distance = 2000; //4304
+            int tick_Distance = 4304; //4304
             rightMotor.setPower(.5); //0.5
             int MOTOR_MAX_TICK = 538;
             rightMotor.setTargetPosition(tick_Distance);
@@ -132,7 +132,7 @@ public class SailorBotAuto extends LinearOpMode {
 
         sleep(2000);
 
-        int j =1;
+       /* int j =1;
         while (j <= 125)
         {
 
@@ -152,7 +152,7 @@ public class SailorBotAuto extends LinearOpMode {
 
             j++;
         }
-    }
+    }*/
     private void rightTurn()
     {
         int h =1;
@@ -160,7 +160,7 @@ public class SailorBotAuto extends LinearOpMode {
         {
 
 
-            rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+            rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 //       rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             int tick_Distance = 4304;
             rightMotor.setPower(1);
@@ -168,7 +168,7 @@ public class SailorBotAuto extends LinearOpMode {
             rightMotor.setTargetPosition(tick_Distance);
 
 
-            leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+            leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 //        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             leftMotor.setPower(0.5);
             leftMotor.setTargetPosition(tick_Distance);
