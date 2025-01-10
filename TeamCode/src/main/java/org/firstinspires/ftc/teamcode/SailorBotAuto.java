@@ -82,9 +82,9 @@ public class SailorBotAuto extends LinearOpMode {
           //moveRightMotor();
 //        parkRobot();
        // moveIncrementally();
-        //moving();
+        moving();
        // rightTurn();
-        encoderMover();
+        //encoderMover(); //doesnt work
     }
 
     @Override
@@ -109,7 +109,7 @@ public class SailorBotAuto extends LinearOpMode {
     private void moving()
     {
     int h =1;
-        while (h <= 204) // 85 or 84 is the rough estimate of tick per rotation
+        while (h <= 102) // 85 or 84 is the rough estimate of tick per rotation //204
         {
             // this is the forward moving method
             //not the backward. do not mix it up
@@ -128,6 +128,29 @@ public class SailorBotAuto extends LinearOpMode {
             leftMotor.setTargetPosition(tick_Distance);
 
             h++;
+        }
+
+        sleep(2000);
+
+        int j =1;
+        while (j <= 125)
+        {
+
+
+            rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+//       rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            int tick_Distance = 4304;
+            rightMotor.setPower(1);
+            int MOTOR_MAX_TICK = 538;
+            rightMotor.setTargetPosition(tick_Distance);
+
+
+            leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+//        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            leftMotor.setPower(0.5);
+            leftMotor.setTargetPosition(tick_Distance);
+
+            j++;
         }
     }
     private void rightTurn()
@@ -238,10 +261,7 @@ public class SailorBotAuto extends LinearOpMode {
 
 
     }
-    public void encoderMover()
-    {
-        encoderDrive(DRIVE_SPEED, 48, 48, 5.0);
-    }
+
 
 //
 //    /* Declare OpMode members. */
