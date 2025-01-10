@@ -116,8 +116,8 @@ public class SailorBotAuto extends LinearOpMode {
 
             rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 //       rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            int tick_Distance = 4304;
-            rightMotor.setPower(0.5);
+            int tick_Distance = 2000; //4304
+            rightMotor.setPower(.5); //0.5
             int MOTOR_MAX_TICK = 538;
             rightMotor.setTargetPosition(tick_Distance);
 
