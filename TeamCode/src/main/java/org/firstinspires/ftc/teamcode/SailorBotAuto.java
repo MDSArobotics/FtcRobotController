@@ -82,10 +82,42 @@ public class SailorBotAuto extends LinearOpMode {
           //moveRightMotor();
 //        parkRobot();
        // moveIncrementally();
-        moving();
-       // rightTurn();
-        //encoderMover(); //doesnt work
+        doAll();
+
     }
+
+    private void doAll()
+    {
+        moving();
+        turnRight();
+    }
+
+    private void turnRight() {
+        int j =1;
+        while (j <= 118)
+        {
+
+
+            rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+            rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            int tick_Distance = 4304;
+            rightMotor.setPower(1);
+            int MOTOR_MAX_TICK = 538;
+            rightMotor.setTargetPosition(tick_Distance);
+
+
+            leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+            leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            leftMotor.setPower(1);
+            leftMotor.setTargetPosition(tick_Distance);
+
+            j++;
+        }
+        telemetry.addData("I moved: ", j);
+        telemetry.update();
+
+    }
+
 
     @Override
     public void waitForStart() {
@@ -106,75 +138,34 @@ public class SailorBotAuto extends LinearOpMode {
         }
     }
 
-    private void moving()
-    {
-    int h =1;
+    private void moving() {
+        int h = 1;
+        int moveDis = 204;
         while (h <= 204) // 85 or 84 is the rough estimate of tick per rotation //204
         {
             // this is the forward moving method
             //not the backward. do not mix it up
 
             rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-//       rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             int tick_Distance = 4304; //4304
-            rightMotor.setPower(.5); //0.5
+            rightMotor.setPower(1); //0.5
             int MOTOR_MAX_TICK = 538;
             rightMotor.setTargetPosition(tick_Distance);
 
 
             leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-//        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            leftMotor.setPower(0.5);
+            leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            leftMotor.setPower(1);
             leftMotor.setTargetPosition(tick_Distance);
 
             h++;
         }
+        telemetry.addData("I moved: ", h);
+        telemetry.update();
 
-        sleep(2000);
+        sleep(3000);
 
-       /* int j =1;
-        while (j <= 125)
-        {
-
-
-            rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-//       rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            int tick_Distance = 4304;
-            rightMotor.setPower(1);
-            int MOTOR_MAX_TICK = 538;
-            rightMotor.setTargetPosition(tick_Distance);
-
-
-            leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-//        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            leftMotor.setPower(0.5);
-            leftMotor.setTargetPosition(tick_Distance);
-
-            j++;
-        }
-    }*/
-    private void rightTurn()
-    {
-        int h =1;
-        while (h <= 118)
-        {
-
-
-            rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-//       rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            int tick_Distance = 4304;
-            rightMotor.setPower(1);
-            int MOTOR_MAX_TICK = 538;
-            rightMotor.setTargetPosition(tick_Distance);
-
-
-            leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-//        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            leftMotor.setPower(0.5);
-            leftMotor.setTargetPosition(tick_Distance);
-
-            h++;
-        }
     }
     private void moveIncrementally()
     {
