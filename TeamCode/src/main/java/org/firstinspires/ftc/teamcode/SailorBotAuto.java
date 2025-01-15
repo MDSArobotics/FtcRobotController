@@ -72,18 +72,22 @@ public class SailorBotAuto extends LinearOpMode {
     private DcMotor rightMotor = null;
     private DcMotor leftMotor = null;
 
+    private DcMotor armMotor = null;
+
+
 
     @Override
     public void runOpMode() throws InterruptedException {
        waitForStart();
         rightMotor = hardwareMap.get(DcMotor.class,"right_drive");
         leftMotor = hardwareMap.get(DcMotor.class,"left_drive");
+        armMotor = hardwareMap.get(DcMotor.class,"arm");
 //        showAttachedDevices();
           //moveRightMotor();
 //        parkRobot();
        // moveIncrementally();
-        doAll();
-
+       // doAll();
+        armMoving();
     }
 
     private void doAll()
@@ -162,6 +166,32 @@ public class SailorBotAuto extends LinearOpMode {
             h++;
         }
         telemetry.addData("I moved: ", h);
+        telemetry.update();
+
+        sleep(3000);
+
+    }
+
+    private void armMoving()
+    {
+        int h = 1;
+        int moveDis = 100;
+        while (h <= moveDis) // 85 or 84 is the rough estimate of tick per rotation //204
+        {
+            // this is the forward moving method
+            //not the backward. do not mix it up
+
+            armMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+            armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            int tick_Distance = 4304; //4304
+            armMotor.setPower(1); //0.5
+            int MOTOR_MAX_TICK = 538;
+            armMotor.setTargetPosition(tick_Distance);
+
+
+            h++;
+        }
+        telemetry.addData("I moved (arm): ", h);
         telemetry.update();
 
         sleep(3000);
