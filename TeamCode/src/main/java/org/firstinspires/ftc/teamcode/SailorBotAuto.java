@@ -86,8 +86,9 @@ public class SailorBotAuto extends LinearOpMode {
           //moveRightMotor();
 //        parkRobot();
        // moveIncrementally();
-       // doAll();
-        armMoving();
+      //  doAll();
+        //armMoving();
+        moving();
     }
 
     private void doAll()
@@ -117,8 +118,8 @@ public class SailorBotAuto extends LinearOpMode {
 
             j++;
         }
-        telemetry.addData("I moved: ", j);
-        telemetry.update();
+       // telemetry.addData("I moved: ", j);
+       // telemetry.update();
 
     }
 
@@ -165,10 +166,10 @@ public class SailorBotAuto extends LinearOpMode {
 
             h++;
         }
-        telemetry.addData("I moved: ", h);
-        telemetry.update();
+       // telemetry.addData("I moved: ", h);
+       // telemetry.update();
 
-        sleep(3000);
+       // sleep(3000);
 
     }
 
