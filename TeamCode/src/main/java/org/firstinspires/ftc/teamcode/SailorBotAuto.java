@@ -71,8 +71,7 @@ import java.util.SortedSet;
 public class SailorBotAuto extends LinearOpMode {
     private DcMotor rightMotor = null;
     private DcMotor leftMotor = null;
-
-    private DcMotor armMotor = null;
+    //private DcMotor armMotor = null;
 
 
 
@@ -81,7 +80,7 @@ public class SailorBotAuto extends LinearOpMode {
        waitForStart();
         rightMotor = hardwareMap.get(DcMotor.class,"right_drive");
         leftMotor = hardwareMap.get(DcMotor.class,"left_drive");
-        armMotor = hardwareMap.get(DcMotor.class,"arm");
+       // armMotor = hardwareMap.get(DcMotor.class,"arm");
 //        showAttachedDevices();
           //moveRightMotor();
 //        parkRobot();
