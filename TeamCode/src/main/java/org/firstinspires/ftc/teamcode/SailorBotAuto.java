@@ -87,7 +87,8 @@ public class SailorBotAuto extends LinearOpMode {
        // moveIncrementally();
       //  doAll();
         //armMoving();
-        moving();
+       // moving();
+        setLaceyPosition();
     }
 
     private void doAll()
@@ -96,11 +97,41 @@ public class SailorBotAuto extends LinearOpMode {
         turnRight();
     }
 
-    private void turnRight() {
-        int j =1;
-        while (j <= 118)
-        {
+    private void setLaceyPosition() {
 
+        int TARGET_POSITION = 500;
+        int MOTOR_MAX_TICK = 538;
+
+        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightMotor.setTargetPosition(tick_Distance);
+
+
+        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftMotor.setTargetPosition(tick_Distance);
+
+        telemetry.addData("Currently at", " at %7d :%7d",
+                leftDrive.getCurrentPosition(), rightDrive.getCurrentPosition());
+
+        leftMotor.setPower(1);
+        rightMotor.setPower(1);
+
+        while (opModeIsActive() &&
+                (leftMotor.isBusy() && rightMotor.isBusy())) {
+
+            // Display it for the driver.
+            telemetry.addData("Running to", " %7d :%7d", TARGET_POSITION, TARGET_POSITION);
+            telemetry.addData("Currently at", " at %7d :%7d",
+                    leftDrive.getCurrentPosition(), rightDrive.getCurrentPosition());
+            telemetry.update();
+        }
+    }
+
+
+        private void turnRight() {
+        int j =1;
+        while (j <= 118) {
 
             rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
             rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -145,11 +176,9 @@ public class SailorBotAuto extends LinearOpMode {
     private void moving() {
         int h = 1;
         int moveDis = 204;
-        while (h <= 204) // 85 or 84 is the rough estimate of tick per rotation //204
-        {
+        while (h <= 204) // 85 or 84 is the rough estimate of tick per rotation //20
             // this is the forward moving method
-            //not the backward. do not mix it up
-
+            //not the backward. do not mix it u
             rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
             rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             int tick_Distance = 4304; //4304
