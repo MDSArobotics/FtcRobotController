@@ -29,6 +29,9 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import static android.os.SystemClock.sleep;
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -68,7 +71,7 @@ import java.util.SortedSet;
  */
 
 @Autonomous(name="SailorBot Auto", group="Robot")
-public class SailorBotAuto extends LinearOpMode {
+public class sailorBotAuto extends LinearOpMode {
     private DcMotor rightMotor = null;
     private DcMotor leftMotor = null;
     //private DcMotor armMotor = null;
@@ -201,75 +204,75 @@ public class SailorBotAuto extends LinearOpMode {
 
     }
 
-    private void armMoving()
-    {
-        int h = 1;
-        int moveDis = 100;
-        while (h <= moveDis) // 85 or 84 is the rough estimate of tick per rotation //204
-        {
-            // this is the forward moving method
-            //not the backward. do not mix it up
-
-            armMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-            armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            int tick_Distance = 4304; //4304
-            armMotor.setPower(1); //0.5
-            int MOTOR_MAX_TICK = 538;
-            armMotor.setTargetPosition(tick_Distance);
-
-
-            h++;
-        }
-        telemetry.addData("I moved (arm): ", h);
-        telemetry.update();
-
-        sleep(3000);
-
-    }
-    private void moveIncrementally()
-    {
-//        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
-
-        int tick_Distance = 4304;
-        rightMotor.setPower(1.0);
-        int cumTicks = 0;
-        int currentPosition = rightMotor.getCurrentPosition();
-        int MOTOR_MAX_TICK = 538;
-        int MOTOR_MIN_TICK = 1;
-        if(currentPosition != 1)
-        {
-            // move from current position to the end of a wheel rotation
-            tellMe("Current position is: ", currentPosition);
-            rightMotor.getCurrentPosition();
-            rightMotor.setTargetPosition(538);
-            //left motor movement = cumticks
-            cumTicks += MOTOR_MAX_TICK - currentPosition;
-            int leftMotorTicks = cumTicks;
-        }
-        while((tick_Distance - cumTicks) <= 538)
-        {
-            // preform full wheel rotations until there is less than one rotation remaining
-            tellMe("Current position is: ", currentPosition);
-            rightMotor.setTargetPosition(MOTOR_MAX_TICK / 2);
-            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
-            cumTicks += 538;
-        }
-        // move remaining distance
-
-        if((tick_Distance - cumTicks) != 0)
-        {
-            tellMe("Current position is: ", currentPosition);
-            rightMotor.setTargetPosition(tick_Distance - cumTicks);
-        }
-        double leftCurrentPos = leftMotor.getCurrentPosition();
-
-        if (leftCurrentPos + MOTOR_MAX_TICK > 538)
-        {
-            double leftMotorPartialTicks = leftCurrentPos + MOTOR_MAX_TICK;
-
-        }
-
-    }
+   // private void armMoving()
+//    {
+//        int h = 1;
+//        int moveDis = 100;
+//        while (h <= moveDis) // 85 or 84 is the rough estimate of tick per rotation //204
+//        {
+//            // this is the forward moving method
+//            //not the backward. do not mix it up
+//
+//            armMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+//            armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//            int tick_Distance = 4304; //4304
+//            armMotor.setPower(1); //0.5
+//            int MOTOR_MAX_TICK = 538;
+//            armMotor.setTargetPosition(tick_Distance);
+//
+//
+//            h++;
+//        }
+//        telemetry.addData("I moved (arm): ", h);
+//        telemetry.update();
+//
+//        sleep(3000);
+//
+//    }
+//    private void moveIncrementally()
+//    {
+////        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
+//
+//        int tick_Distance = 4304;
+//        rightMotor.setPower(1.0);
+//        int cumTicks = 0;
+//        int currentPosition = rightMotor.getCurrentPosition();
+//        int MOTOR_MAX_TICK = 538;
+//        int MOTOR_MIN_TICK = 1;
+//        if(currentPosition != 1)
+//        {
+//            // move from current position to the end of a wheel rotation
+//            tellMe("Current position is: ", currentPosition);
+//            rightMotor.getCurrentPosition();
+//            rightMotor.setTargetPosition(538);
+//            //left motor movement = cumticks
+//            cumTicks += MOTOR_MAX_TICK - currentPosition;
+//            int leftMotorTicks = cumTicks;
+//        }
+//        while((tick_Distance - cumTicks) <= 538)
+//        {
+//            // preform full wheel rotations until there is less than one rotation remaining
+//            tellMe("Current position is: ", currentPosition);
+//            rightMotor.setTargetPosition(MOTOR_MAX_TICK / 2);
+//            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
+//            cumTicks += 538;
+//        }
+//        // move remaining distance
+//
+//        if((tick_Distance - cumTicks) != 0)
+//        {
+//            tellMe("Current position is: ", currentPosition);
+//            rightMotor.setTargetPosition(tick_Distance - cumTicks);
+//        }
+//        double leftCurrentPos = leftMotor.getCurrentPosition();
+//
+//        if (leftCurrentPos + MOTOR_MAX_TICK > 538)
+//        {
+//            double leftMotorPartialTicks = leftCurrentPos + MOTOR_MAX_TICK;
+//
+//        }
+//
+//    }
 
     private void tellMe(String caption, int currentPosition) {
         telemetry.addData(caption, currentPosition);
@@ -277,40 +280,40 @@ public class SailorBotAuto extends LinearOpMode {
         sleep(2000);
     }
 
-    private void moveRightMotor()
-    {
-//        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
-        int currentPosition = rightMotor.getCurrentPosition();
-        final int MOTOR_MAX_TICK = 538;
-
-        telemetry.addData("Current Position is: ", currentPosition);
-        telemetry.update();
-        sleep(5000);
-
-        rightMotor.setPower(.3);
-
-        if (currentPosition != 0)
-        {
-            telemetry.addData("Current Position is not equal to 0. Setting target position to ", MOTOR_MAX_TICK);
-            telemetry.update();
-            sleep(5000);
-            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
-
-            telemetry.addData("Setting target position to ", currentPosition);
-            telemetry.update();
-            sleep(5000);
-            rightMotor.setTargetPosition(currentPosition);
-        }
-        else
-        {
-            telemetry.addData("Current Position is equal to 0. Setting target position to ", MOTOR_MAX_TICK);
-            telemetry.update();
-            sleep(5000);
-            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
-        }
-
-
-    }
+//    private void moveRightMotor()
+//    {
+////        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
+//        int currentPosition = rightMotor.getCurrentPosition();
+//        final int MOTOR_MAX_TICK = 538;
+//
+//        telemetry.addData("Current Position is: ", currentPosition);
+//        telemetry.update();
+//        sleep(5000);
+//
+//        rightMotor.setPower(.3);
+//
+//        if (currentPosition != 0)
+//        {
+//            telemetry.addData("Current Position is not equal to 0. Setting target position to ", MOTOR_MAX_TICK);
+//            telemetry.update();
+//            sleep(5000);
+//            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
+//
+//            telemetry.addData("Setting target position to ", currentPosition);
+//            telemetry.update();
+//            sleep(5000);
+//            rightMotor.setTargetPosition(currentPosition);
+//        }
+//        else
+//        {
+//            telemetry.addData("Current Position is equal to 0. Setting target position to ", MOTOR_MAX_TICK);
+//            telemetry.update();
+//            sleep(5000);
+//            rightMotor.setTargetPosition(MOTOR_MAX_TICK);
+//        }
+//
+//
+//    }
 
 
 //
