@@ -29,6 +29,8 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import android.annotation.SuppressLint;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -173,6 +175,7 @@ public class SailorBotAuto extends LinearOpMode {
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private void moving() {
         int h = 1;
         int moveDis = 204;
