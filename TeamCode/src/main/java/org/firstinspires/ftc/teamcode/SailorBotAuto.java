@@ -87,8 +87,16 @@ public class SailorBotAuto extends LinearOpMode {
        // moveIncrementally();
       //  doAll();
         //armMoving();
-       // moving();
+        telemetry.addData("hello", "hi");
+        telemetry.update();
+        sleep(2000);
+       //moving();
         setLaceyPosition();
+        telemetry.addData("done to call movin","g");
+        telemetry.update();
+        sleep(2000);
+        //setLaceyPosition();
+
     }
 
     private void doAll()
