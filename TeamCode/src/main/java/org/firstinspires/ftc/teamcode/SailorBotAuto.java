@@ -104,15 +104,15 @@ public class SailorBotAuto extends LinearOpMode {
 
         rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rightMotor.setTargetPosition(tick_Distance);
+        rightMotor.setTargetPosition(TARGET_POSITION);
 
 
         leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftMotor.setTargetPosition(tick_Distance);
+        leftMotor.setTargetPosition(TARGET_POSITION);
 
         telemetry.addData("Currently at", " at %7d :%7d",
-                leftDrive.getCurrentPosition(), rightDrive.getCurrentPosition());
+                leftMotor.getCurrentPosition(), rightMotor.getCurrentPosition());
 
         leftMotor.setPower(1);
         rightMotor.setPower(1);
@@ -123,7 +123,7 @@ public class SailorBotAuto extends LinearOpMode {
             // Display it for the driver.
             telemetry.addData("Running to", " %7d :%7d", TARGET_POSITION, TARGET_POSITION);
             telemetry.addData("Currently at", " at %7d :%7d",
-                    leftDrive.getCurrentPosition(), rightDrive.getCurrentPosition());
+                    leftMotor.getCurrentPosition(), rightMotor.getCurrentPosition());
             telemetry.update();
         }
     }
@@ -177,6 +177,7 @@ public class SailorBotAuto extends LinearOpMode {
         int h = 1;
         int moveDis = 204;
         while (h <= 204) // 85 or 84 is the rough estimate of tick per rotation //20
+        {
             // this is the forward moving method
             //not the backward. do not mix it u
             rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -201,31 +202,31 @@ public class SailorBotAuto extends LinearOpMode {
 
     }
 
-    private void armMoving()
-    {
-        int h = 1;
-        int moveDis = 100;
-        while (h <= moveDis) // 85 or 84 is the rough estimate of tick per rotation //204
-        {
-            // this is the forward moving method
-            //not the backward. do not mix it up
-
-            armMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-            armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            int tick_Distance = 4304; //4304
-            armMotor.setPower(1); //0.5
-            int MOTOR_MAX_TICK = 538;
-            armMotor.setTargetPosition(tick_Distance);
-
-
-            h++;
-        }
-        telemetry.addData("I moved (arm): ", h);
-        telemetry.update();
-
-        sleep(3000);
-
-    }
+//    private void armMoving()
+//    {
+//        int h = 1;
+//        int moveDis = 100;
+//        while (h <= moveDis) // 85 or 84 is the rough estimate of tick per rotation //204
+//        {
+//            // this is the forward moving method
+//            //not the backward. do not mix it up
+//
+//            armMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+//            armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//            int tick_Distance = 4304; //4304
+//            armMotor.setPower(1); //0.5
+//            int MOTOR_MAX_TICK = 538;
+//            armMotor.setTargetPosition(tick_Distance);
+//
+//
+//            h++;
+//        }
+//        telemetry.addData("I moved (arm): ", h);
+//        telemetry.update();
+//
+//        sleep(3000);
+//
+//    }
     private void moveIncrementally()
     {
 //        DcMotor rightMotor = (DcMotor) hardwareMap.get("right_motor");
