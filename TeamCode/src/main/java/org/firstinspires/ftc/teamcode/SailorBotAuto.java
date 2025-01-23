@@ -107,26 +107,35 @@ public class SailorBotAuto extends LinearOpMode {
 
     private void setLaceyPosition() {
 
-        int TARGET_POSITION = 500;
+        int TARGET_POSITION = 50;
         int MOTOR_MAX_TICK = 538;
 
-        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        rightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightMotor.setTargetPosition(TARGET_POSITION);
+        rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
         leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftMotor.setTargetPosition(TARGET_POSITION);
+        leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         telemetry.addData("Currently at", " at %7d :%7d",
                 leftMotor.getCurrentPosition(), rightMotor.getCurrentPosition());
 
-        leftMotor.setPower(1);
-        rightMotor.setPower(1);
 
-        while (opModeIsActive() &&
-                (leftMotor.isBusy() && rightMotor.isBusy())) {
+        telemetry.addData("moving to", rightMotor.getTargetPosition());
+        leftMotor.setPower(.1);
+        rightMotor.setPower(.1);
+
+
+        while ( //opModeIsActive
+                (leftMotor.isBusy() || rightMotor.isBusy())) {
 
             // Display it for the driver.
             telemetry.addData("Running to", " %7d :%7d", TARGET_POSITION, TARGET_POSITION);
