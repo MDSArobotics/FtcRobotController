@@ -126,13 +126,13 @@ public class BasicOpMode_Linear extends LinearOpMode {
             // check to see if we need to move the servo.
             if(gamepad2.left_stick_x<0) {
                 // move to 0 degrees.
-                wrist.setPosition(0);
+                wrist.setPosition(.2);
             } else if (gamepad2.left_stick_x==0) {
                 // move to 90 degrees.
                 wrist.setPosition(.5);
             } else if (gamepad2.left_stick_x>0) {
                 // move to 180 degrees.
-                wrist.setPosition(1);
+                wrist.setPosition(.8);
             }
 
             if (gamepad2.y)
