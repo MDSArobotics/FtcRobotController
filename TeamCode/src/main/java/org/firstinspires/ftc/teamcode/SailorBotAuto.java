@@ -107,8 +107,9 @@ public class SailorBotAuto extends LinearOpMode {
 
     private void setLaceyPosition() {
 
-        int TARGET_POSITION = 50;
-        int MOTOR_MAX_TICK = 538;
+        int TARGET_POSITION = 5;
+        double MOTOR_POWER = 0.01;
+        //int MOTOR_MAX_TICK = 538;
 
         rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -125,13 +126,15 @@ public class SailorBotAuto extends LinearOpMode {
         leftMotor.setTargetPosition(TARGET_POSITION);
         leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
+        telemetry.setAutoClear(false);
+
         telemetry.addData("Currently at", " at %7d :%7d",
                 leftMotor.getCurrentPosition(), rightMotor.getCurrentPosition());
 
 
         telemetry.addData("moving to", rightMotor.getTargetPosition());
-        leftMotor.setPower(.1);
-        rightMotor.setPower(.1);
+        leftMotor.setPower(MOTOR_POWER);
+        rightMotor.setPower(MOTOR_POWER);
 
 
         while ( //opModeIsActive
@@ -143,6 +146,8 @@ public class SailorBotAuto extends LinearOpMode {
                     leftMotor.getCurrentPosition(), rightMotor.getCurrentPosition());
             telemetry.update();
         }
+        leftMotor.setPower(0);
+        rightMotor.setPower(0);
     }
 
 
