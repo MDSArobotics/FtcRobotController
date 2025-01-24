@@ -32,10 +32,10 @@ public class SailorBotNetZone extends LinearOpMode {
 
     private void doAll(){
         setLaceyPosition(5);
-        rightTurn();
+        rightTurn(2);
         setLaceyPosition(10);
-        rightTurn();
-        setArm();
+        rightTurn(2);
+        setArm(3);
     }
     private void setLaceyPosition(int position) {
 
@@ -77,9 +77,9 @@ public class SailorBotNetZone extends LinearOpMode {
         }
     }
 
-    private void rightTurn() {
+    private void rightTurn(int position) {
 
-        int TARGET_POSITION = 5;
+        int TARGET_POSITION =  position;
         //int MOTOR_MAX_TICK = 538;
 
         rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -117,9 +117,9 @@ public class SailorBotNetZone extends LinearOpMode {
         }
     }
 
-    private void setArm() {
+    private void setArm(int position) {
 
-        int TARGET_POSITION = 5;
+        int TARGET_POSITION = position;
         //int MOTOR_MAX_TICK = 538;
 
         armMotor.setDirection(DcMotorSimple.Direction.REVERSE);
