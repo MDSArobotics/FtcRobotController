@@ -110,10 +110,21 @@ public class SailorBotAuto extends LinearOpMode {
         int TARGET_POSITION = 5;
         double MOTOR_POWER = 0.01;
         //int MOTOR_MAX_TICK = 538;
+        telemetry.addData("left motor",  " position %7d power %7d target %7d",
+                leftMotor.getCurrentPosition(),
+                leftMotor.getPower(),
+                leftMotor.getTargetPosition());
+        telemetry.addData("right motor",  " position %7d power %7d target %7d",
+                rightMotor.getCurrentPosition(),
+                rightMotor.getPower(),
+                rightMotor.getTargetPosition());
 
         rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
+        telemetry.addData("right motor",  " position %7d power %7d target %7d",
+                rightMotor.getCurrentPosition(),
+                rightMotor.getPower(),
+                rightMotor.getTargetPosition());
         rightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightMotor.setTargetPosition(TARGET_POSITION);
         rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -121,15 +132,25 @@ public class SailorBotAuto extends LinearOpMode {
 
         leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
+        telemetry.addData("left motor",  " position %7d power %7d target %7d",
+                leftMotor.getCurrentPosition(),
+                leftMotor.getPower(),
+                leftMotor.getTargetPosition());
         leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftMotor.setTargetPosition(TARGET_POSITION);
         leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         telemetry.setAutoClear(false);
 
-        telemetry.addData("Currently at", " at %7d :%7d",
-                leftMotor.getCurrentPosition(), rightMotor.getCurrentPosition());
+        telemetry.addData("left motor",  " position %7d power %7d target %7d",
+                leftMotor.getCurrentPosition(),
+                leftMotor.getPower(),
+                leftMotor.getTargetPosition());
+        telemetry.addData("right motor",  " position %7d power %7d target %7d",
+                rightMotor.getCurrentPosition(),
+                rightMotor.getPower(),
+                rightMotor.getTargetPosition());
+
 
 
         telemetry.addData("moving to", rightMotor.getTargetPosition());
