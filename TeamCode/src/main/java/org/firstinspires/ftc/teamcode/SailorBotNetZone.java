@@ -62,8 +62,8 @@ public class SailorBotNetZone extends LinearOpMode {
 
 
         telemetry.addData("moving to", rightMotor.getTargetPosition());
-        leftMotor.setPower(.1);
-        rightMotor.setPower(.1);
+        leftMotor.setPower(.01);
+        rightMotor.setPower(.01);
 
 
         while ( //opModeIsActive
@@ -146,5 +146,9 @@ public class SailorBotNetZone extends LinearOpMode {
                     armMotor.getCurrentPosition());
             telemetry.update();
         }
+    }
+    @Override
+    public void waitForStart() {
+        super.waitForStart();
     }
 }
