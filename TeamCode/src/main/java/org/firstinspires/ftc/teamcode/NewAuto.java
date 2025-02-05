@@ -78,39 +78,50 @@ public class NewAuto extends LinearOpMode {
         {
             if (newX < currX)
             {
-                leftMotor.setTargetPosition((int) Math.abs(newX-currX));
-                rightMotor.setTargetPosition((int) Math.abs(newX-currX));
-
-                leftMotor.setDirection(DcMotor.Direction.FORWARD);
-                rightMotor.setDirection(DcMotor.Direction.REVERSE);
-                int leftCurrPos = (int) (currX -= newX);
-                int rightCurrPos = (int) (currX -= newX);
-                isMovable = false;
+                moveBackwards(newX);
             }
 
             else if (newX > currX)
             {
-                leftMotor.setTargetPosition((int) Math.abs(newX-currX));
-                rightMotor.setTargetPosition((int) Math.abs(newX-currX));
-
-                leftMotor.setDirection(DcMotor.Direction.REVERSE);
-                rightMotor.setDirection(DcMotor.Direction.FORWARD);
-                int leftCurrPos = (int)(currX += newX);
-                int rightCurrPos = (int)(currX += newX);
-                isMovable = false;
+                moveForward(newX);
             }
 
             else
             {
-                leftMotor.setPower(0);
-                rightMotor.setPower(0);
+                stop();
             }
         }
         else
         {
-            leftMotor.setPower(0);
-            rightMotor.setPower(0);
+            stop();
         }
+    }
+
+    private void stop() {
+        leftMotor.setPower(0);
+        rightMotor.setPower(0);
+    }
+
+    private void moveForward(int newX) {
+        leftMotor.setTargetPosition((int) Math.abs(newX -currX));
+        rightMotor.setTargetPosition((int) Math.abs(newX -currX));
+
+        leftMotor.setDirection(DcMotor.Direction.REVERSE);
+        rightMotor.setDirection(DcMotor.Direction.FORWARD);
+        int leftCurrPos = (int)(currX += newX);
+        int rightCurrPos = (int)(currX += newX);
+        isMovable = false;
+    }
+
+    private void moveBackwards(int newX) {
+        leftMotor.setTargetPosition((int) Math.abs(newX -currX));
+        rightMotor.setTargetPosition((int) Math.abs(newX -currX));
+
+        leftMotor.setDirection(DcMotor.Direction.FORWARD);
+        rightMotor.setDirection(DcMotor.Direction.REVERSE);
+        int leftCurrPos = (int) (currX -= newX);
+        int rightCurrPos = (int) (currX -= newX);
+        isMovable = false;
     }
 
     // moves either forwards or backwards based on the current pos of the robot
@@ -141,14 +152,12 @@ public class NewAuto extends LinearOpMode {
 
             else
             {
-                leftMotor.setPower(0);
-                rightMotor.setPower(0);
+                stop();
             }
         }
         else
         {
-            leftMotor.setPower(0);
-            rightMotor.setPower(0);
+            stop();
         }
 
     }
