@@ -1,21 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.HardwareDevice;
-import com.qualcomm.robotcore.util.ElapsedTime;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.SortedSet;
-
 
 
 @Autonomous(name="New Auto", group="Robot")
 public class NewAuto extends LinearOpMode {
+    private boolean DEBUG = true;
     private DcMotor rightMotor = null;
     private DcMotor leftMotor = null;
     //private DcMotor armMotor = null;
@@ -23,10 +15,20 @@ public class NewAuto extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        telemetry.addData("entering runOpMode", 1);
         waitForStart();
+        telemetry.addData("ran waitForStart", 1);
         rightMotor = hardwareMap.get(DcMotor.class, "right_drive");
+        telemetry.addData("right motor done", 1);
         leftMotor = hardwareMap.get(DcMotor.class, "left_drive");
+        telemetry.addData("left motor done", 1);
         // armMotor = hardwareMap.get(DcMotor.class,"arm");
+        curr(0, 0);
+        telemetry.addData("currX & currY set to 20", 1);
+        moveX(1000);
+        telemetry.addData("moveX 5 ran", 1);
+        telemetry.update();
+
 
 
     }
@@ -37,9 +39,16 @@ public class NewAuto extends LinearOpMode {
     // when set it collects current x and y which is soon to be determined
     public void curr(double currX, double currY)
     {
+        if (DEBUG) {
+            telemetry.addData("in current method", 1);
+            telemetry.update();
+        }
         this.currX = currX;
         this.currY = currY;
-
+        if (DEBUG) {
+            telemetry.addData("leaving current method", 1);
+            telemetry.update();
+        }
     }
 
     boolean isMovable = true;
@@ -74,35 +83,75 @@ public class NewAuto extends LinearOpMode {
     // compared to the new input of coords requested to move
     public void moveX(int newX)
     {
+        if (DEBUG) {
+            telemetry.addData("in move method", 1);
+            telemetry.update();
+            sleep(500);
+        }
         if(isMovable)
         {
+            if (DEBUG) {
+                telemetry.addData("in isMovable loop", isMovable);
+                telemetry.update();
+                sleep(500);
+            }
             if (newX < currX)
             {
-                moveBackwards(newX);
+                if (DEBUG) {
+                    telemetry.addData("new X is less than currX", newX);
+                    telemetry.update();
+                    sleep(500);
+                }
+                for(int i = 0; i<= 50; i++) {
+                    moveBackwardsX(newX);
+                }
             }
 
             else if (newX > currX)
             {
-                moveForward(newX);
+                if (DEBUG) {
+                    telemetry.addData("new X is greater than currX", newX);
+                    telemetry.update();
+                    sleep(500);
+                }
+                for(int i = 0; i<= 50; i++) {
+                    moveForwardX(newX);
+                }
             }
 
             else
             {
-                stop();
+                if (DEBUG) {
+                    telemetry.addData("newX = currX", newX);
+                    telemetry.update();
+                    sleep(500);
+                }
+                dontMove();
             }
         }
         else
         {
-            stop();
+            if (DEBUG) {
+                telemetry.addData("not movable", newX);
+                telemetry.update();
+                sleep(500);
+            }
+            dontMove();
+
         }
     }
 
-    private void stop() {
+    public void dontMove() {
         leftMotor.setPower(0);
         rightMotor.setPower(0);
     }
 
-    private void moveForward(int newX) {
+    private void moveForwardX(int newX) {
+        if (DEBUG) {
+            telemetry.addData("in moveForwardX", newX);
+            telemetry.update();
+            sleep(500);
+        }
         leftMotor.setTargetPosition((int) Math.abs(newX -currX));
         rightMotor.setTargetPosition((int) Math.abs(newX -currX));
 
@@ -110,10 +159,22 @@ public class NewAuto extends LinearOpMode {
         rightMotor.setDirection(DcMotor.Direction.FORWARD);
         int leftCurrPos = (int)(currX += newX);
         int rightCurrPos = (int)(currX += newX);
+        rightMotor.setPower(.3);
+        leftMotor.setPower(.3);
+        while (
+                (leftMotor.isBusy() || rightMotor.isBusy())) {
+
+            // Display it for the driver.
+            telemetry.addData("Currently at", " at %7d :%7d",
+                    leftMotor.getCurrentPosition(), rightMotor.getCurrentPosition());
+            telemetry.update();
+        }
+        //   rightMotor.setPower(0);
+        //leftMotor.setPower(0);
         isMovable = false;
     }
 
-    private void moveBackwards(int newX) {
+    private void moveBackwardsX(int newX) {
         leftMotor.setTargetPosition((int) Math.abs(newX -currX));
         rightMotor.setTargetPosition((int) Math.abs(newX -currX));
 
@@ -132,22 +193,12 @@ public class NewAuto extends LinearOpMode {
         {
             if (newY < currY)
             {
-                leftMotor.setTargetPosition((int) Math.abs(newY-currY));
-                rightMotor.setTargetPosition((int) Math.abs(newY-currY));
-
-                leftMotor.setDirection(DcMotor.Direction.FORWARD);
-                rightMotor.setDirection(DcMotor.Direction.REVERSE);
-                isMovable = false;
+                moveBackwardY(newY);
             }
 
             else if (newY > currY)
             {
-                leftMotor.setTargetPosition((int) Math.abs(newY-currY));
-                rightMotor.setTargetPosition((int) Math.abs(newY-currY));
-
-                leftMotor.setDirection(DcMotor.Direction.REVERSE);
-                rightMotor.setDirection(DcMotor.Direction.FORWARD);
-                isMovable = false;
+                moveForwardY(newY);
             }
 
             else
@@ -160,6 +211,24 @@ public class NewAuto extends LinearOpMode {
             stop();
         }
 
+    }
+
+    private void moveForwardY(int newY) {
+        leftMotor.setTargetPosition((int) Math.abs(newY -currY));
+        rightMotor.setTargetPosition((int) Math.abs(newY -currY));
+
+        leftMotor.setDirection(DcMotor.Direction.REVERSE);
+        rightMotor.setDirection(DcMotor.Direction.FORWARD);
+        isMovable = false;
+    }
+
+    private void moveBackwardY(int newY) {
+        leftMotor.setTargetPosition((int) Math.abs(newY -currY));
+        rightMotor.setTargetPosition((int) Math.abs(newY -currY));
+
+        leftMotor.setDirection(DcMotor.Direction.FORWARD);
+        rightMotor.setDirection(DcMotor.Direction.REVERSE);
+        isMovable = false;
     }
 
     // sets the right turn (soon to be decided the correct amount for it)
