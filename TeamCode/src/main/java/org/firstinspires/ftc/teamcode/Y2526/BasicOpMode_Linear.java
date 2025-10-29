@@ -59,11 +59,11 @@ public class  BasicOpMode_Linear extends LinearOpMode {
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
 
-    private float left_servo;
+    private Servo left_servo;
 
 //    private Servo right_servo;
 
-    @Override
+  //  @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -73,7 +73,7 @@ public class  BasicOpMode_Linear extends LinearOpMode {
         // step (using the FTC Robot Controller app on the phone).
         leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
-//        left_servo = hardwareMap.get(Servo.class, "servo_left");
+        left_servo = hardwareMap.get(Servo.class, "servo_left");
 //        right_servo = hardwareMap.get(Servo.class, "CR_servo_right");
 //        exerciseLeftServo();
 
@@ -89,10 +89,12 @@ public class  BasicOpMode_Linear extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
+            //exerciseLeftServo();
 
             // Setup a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
+            float servo_left;
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -104,9 +106,15 @@ public class  BasicOpMode_Linear extends LinearOpMode {
             leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
             rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
 
-            float rt     = gamepad1.right_trigger;
-            float lt     =gamepad1.left_trigger;
+            //float rt     = gamepad1.right_trigger;
+            //float lt     =gamepad1.left_trigger;
 
+            if (gamepad1.left_trigger > 0.0){
+                left_servo.setPosition(0.0);
+            }
+            if (gamepad1.right_trigger > 0.0){
+                left_servo.setPosition(1.0);
+            }
             // Tank Mode uses one stick to control each wheel.
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
             // leftPower  = -gamepad1.left_stick_y ;
@@ -122,12 +130,12 @@ public class  BasicOpMode_Linear extends LinearOpMode {
             telemetry.update();
         }
     }
-//    public void exerciseLeftServo(){
-//        while(true){
-//            left_servo.setPosition(1.0);
-//            sleep(500);
-//            left_servo.setPosition(0.0);
-//            sleep(500);
-//        }
-//    }
+   public void exerciseLeftServo(){
+        while(true){
+            left_servo.setPosition(1.0);
+            sleep(3000);
+            left_servo.setPosition(0.0);
+            sleep(1000);
+        }
+    }
 }
