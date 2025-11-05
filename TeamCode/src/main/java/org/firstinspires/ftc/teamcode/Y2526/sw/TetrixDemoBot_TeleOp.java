@@ -27,7 +27,6 @@ import com.qualcomm.robotcore.util.Range;
 @TeleOp(name = "TetrixDemoBot_TeleOp")
 public class TetrixDemoBot_TeleOp extends LinearOpMode {
 
-    // Declare OpMode members.
     // Motors
     final ElapsedTime runtime = new ElapsedTime();
     public DcMotor  leftDrive   = null; //the left drivetrain motor
