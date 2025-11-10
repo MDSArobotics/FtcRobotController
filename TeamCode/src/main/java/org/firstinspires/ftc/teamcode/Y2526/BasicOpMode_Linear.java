@@ -138,34 +138,27 @@ public class  BasicOpMode_Linear extends LinearOpMode {
             telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
             telemetry.update();
         }
+
+    }
+    public void exerciseLeftServo(){
+        while(true){
+            left_servo.setPosition(10.0);
+            sleep(3000);
+            left_servo.setPosition(0.0);
+            sleep(1000);
+        }
     }
 
-   // /** @noinspection InfiniteLoopStatement*/
-//    private void exerciseRightServo() {
-//        while(true){
-//            right_servo.setDirection(FORWARD);
-//            right_servo.setPower(2);
-//            sleep(10000);
-//            right_servo.setDirection(REVERSE);
-//            right_servo.setPower(1);
-//            sleep(4000);
-//        }
+
+    private void exerciseRightServo() {
+        while (true) {
+            right_servo.setDirection(FORWARD);
+            right_servo.setPower(2);
+            sleep(10000);
+            right_servo.setDirection(REVERSE);
+            right_servo.setPower(1);
+            sleep(4000);
+        }
     }
 
-//    public void exerciseLeftServo(){
-//        while(true){
-//            left_servo.setPosition(10.0);
-//            sleep(3000);
-//            left_servo.setPosition(0.0);
-//            sleep(1000);
-//        }
-//    }
-//    public void exerciseRightServo(){
-//        while(true){
-//            right_servo.setDirection(FORWARD);
-//            sleep(4000);
-//            right_servo.setDirection(REVERSE);
-//            sleep(4000);
-//        }
-//    }
-//}
+}
