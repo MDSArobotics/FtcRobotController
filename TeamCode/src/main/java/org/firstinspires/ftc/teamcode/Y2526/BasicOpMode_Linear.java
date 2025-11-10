@@ -96,7 +96,8 @@ public class  BasicOpMode_Linear extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-            //exerciseLeftServo();
+            exerciseLeftServo();
+            System.exit(0);
             //exerciseRightServo();
 
             // Setup a variable for each drive wheel to save power level for telemetry
@@ -141,7 +142,8 @@ public class  BasicOpMode_Linear extends LinearOpMode {
 
     }
     public void exerciseLeftServo(){
-        while(true){
+        long endTime = System.currentTimeMillis()+5000;
+        while(System.currentTimeMillis()<endTime){
             left_servo.setPosition(10.0);
             sleep(3000);
             left_servo.setPosition(0.0);
