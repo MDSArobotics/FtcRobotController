@@ -29,10 +29,15 @@
 
 package org.firstinspires.ftc.teamcode.Y2526;
 
+import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.FORWARD;
+import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
+
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
@@ -60,6 +65,7 @@ public class  BasicOpMode_Linear extends LinearOpMode {
     private DcMotor rightDrive = null;
 
     private Servo left_servo;
+    private CRServo right_servo;
 
 //    private Servo right_servo;
 
@@ -74,6 +80,7 @@ public class  BasicOpMode_Linear extends LinearOpMode {
         leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
         left_servo = hardwareMap.get(Servo.class, "servo_left");
+        right_servo = hardwareMap.get(CRServo.class, "CR_servo_right");
 //        right_servo = hardwareMap.get(Servo.class, "CR_servo_right");
 //        exerciseLeftServo();
 
@@ -81,7 +88,7 @@ public class  BasicOpMode_Linear extends LinearOpMode {
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
         leftDrive.setDirection(DcMotor.Direction.REVERSE);
-        rightDrive.setDirection(DcMotor.Direction.FORWARD);
+        rightDrive.setDirection(FORWARD);
 
         // Wait for the game to start (driver presses START)
         waitForStart();
@@ -90,11 +97,13 @@ public class  BasicOpMode_Linear extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
             //exerciseLeftServo();
+            //exerciseRightServo();
 
             // Setup a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
             float servo_left;
+            int servo_right;
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -130,12 +139,33 @@ public class  BasicOpMode_Linear extends LinearOpMode {
             telemetry.update();
         }
     }
-   public void exerciseLeftServo(){
-        while(true){
-            left_servo.setPosition(1.0);
-            sleep(3000);
-            left_servo.setPosition(0.0);
-            sleep(1000);
-        }
+
+   // /** @noinspection InfiniteLoopStatement*/
+//    private void exerciseRightServo() {
+//        while(true){
+//            right_servo.setDirection(FORWARD);
+//            right_servo.setPower(2);
+//            sleep(10000);
+//            right_servo.setDirection(REVERSE);
+//            right_servo.setPower(1);
+//            sleep(4000);
+//        }
     }
-}
+
+//    public void exerciseLeftServo(){
+//        while(true){
+//            left_servo.setPosition(10.0);
+//            sleep(3000);
+//            left_servo.setPosition(0.0);
+//            sleep(1000);
+//        }
+//    }
+//    public void exerciseRightServo(){
+//        while(true){
+//            right_servo.setDirection(FORWARD);
+//            sleep(4000);
+//            right_servo.setDirection(REVERSE);
+//            sleep(4000);
+//        }
+//    }
+//}
