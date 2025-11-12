@@ -109,10 +109,10 @@ public class TetrixDemoBot_TeleOp extends LinearOpMode {
 
 
             if(gamepad1.left_bumper){
-                servoGate.setPosition(0);
+                servoGate.setPosition(0.3);
             }
             if(gamepad1.right_bumper){
-                servoGate.setPosition(1);
+                servoGate.setPosition(0.7);
             }
 
             launchPower = gamepad1.right_trigger;
@@ -124,8 +124,10 @@ public class TetrixDemoBot_TeleOp extends LinearOpMode {
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
-            telemetry.addData("Drive Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
-            telemetry.addData("Launch Motor",  "%.2f", launchPower);
+            telemetry.addData("Drive Motors Power", "left (%.2f), right (%.2f)", leftPower, rightPower);
+            telemetry.addData("Launch Motor Power",  "%.2f", launchPower);
+            telemetry.addData("CR Servos Power",  "%.2f", CR_servoPower);
+            telemetry.addData("Gate servos Position",  "%.2f", servoGate.getPosition());
             telemetry.update();
         }
     }
