@@ -33,8 +33,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.util.Range;
 
 /*
  * This OpMode executes a POV Game style Teleop for a direct drive robot
@@ -49,6 +47,7 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 @TeleOp(name="ShooterPrototype")
+@Disabled
 public class ShooterMechanism extends LinearOpMode {
 
     /* Declare OpMode members. */
