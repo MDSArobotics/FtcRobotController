@@ -212,16 +212,16 @@ public class StarterBotTeleop extends OpMode {
          * Here we give the user control of the speed of the launcher motor without automatically
          * queuing a shot.
          */
-        if (gamepad1.y) {
+        if (gamepad2.y) {
             launcher.setVelocity(LAUNCHER_TARGET_VELOCITY);
-        } else if (gamepad1.b) { // stop flywheel
+        } else if (gamepad2.b) { // stop flywheel
             launcher.setVelocity(STOP_SPEED);
         }
 
         /*
          * Now we call our "Launch" function.
          */
-        launch(gamepad1.rightBumperWasPressed());
+        launch(gamepad2.rightBumperWasPressed());
 
         /*
          * Show the state and motor powers
