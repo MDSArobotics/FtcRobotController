@@ -206,7 +206,7 @@ public class StarterBotTeleop extends OpMode {
          * both motors work to rotate the robot. Combinations of these inputs can be used to create
          * more complex maneuvers.
          */
-        arcadeDrive(-gamepad1.left_stick_y, gamepad1.right_stick_x);
+        arcadeDrive(gamepad1.left_stick_y, -gamepad1.right_stick_x);
 
         /*
          * Here we give the user control of the speed of the launcher motor without automatically
@@ -229,6 +229,9 @@ public class StarterBotTeleop extends OpMode {
         telemetry.addData("State", launchState);
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
         telemetry.addData("motorSpeed", launcher.getVelocity());
+        telemetry.addData("rms", rightPower);
+        telemetry.addData("lms", leftPower);
+
 
     }
 
@@ -248,6 +251,8 @@ public class StarterBotTeleop extends OpMode {
          */
         leftDrive.setPower(leftPower);
         rightDrive.setPower(rightPower);
+
+
     }
 
     void launch(boolean shotRequested) {
