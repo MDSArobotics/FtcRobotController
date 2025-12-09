@@ -59,10 +59,10 @@ public class TeleOpCompCopied extends LinearOpMode {
             double leftPower;
             double rightPower;
 
-            double drive = -gamepad1.left_stick_y;
-            double turn  =  gamepad1.right_stick_x;
-            leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
-            rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
+            double drive = gamepad1.left_stick_y;
+            double turn  =  -gamepad1.right_stick_x;
+            leftPower    = Range.clip(drive + turn, -0.6, 0.6) ;
+            rightPower   = Range.clip(drive - turn, -0.6, 0.6) ;
             leftMotor.setPower(leftPower);
             rightMotor.setPower(rightPower);
 
@@ -80,7 +80,7 @@ public class TeleOpCompCopied extends LinearOpMode {
             }
 
             if (gamepad2.a){
-                launchMotor.setPower(0.8);
+                launchMotor.setPower(0.9);
             }
             else if (gamepad2.b){
                 launchMotor.setPower(0.0);
