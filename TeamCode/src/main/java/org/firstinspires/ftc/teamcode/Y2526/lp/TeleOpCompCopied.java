@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp (name = "but it was love too", group = "Linear OpMode")
+@TeleOp (name = "Te Li Op", group = "Linear OpMode")
 public class TeleOpCompCopied extends LinearOpMode {
     private DcMotor leftMotor = null;
     private DcMotor rightMotor = null;
@@ -66,11 +66,11 @@ public class TeleOpCompCopied extends LinearOpMode {
             leftMotor.setPower(leftPower);
             rightMotor.setPower(rightPower);
 
-            if (gamepad1.y){
+            if (gamepad2.y){
                 leftServo.setPower(1.0);
                 rightServo.setPower(-1.0);
             }
-            else if (gamepad1.x){
+            else if (gamepad2.x){
                 leftServo.setPower(-1.0);
                 rightServo.setPower(1.0);
             }
@@ -79,10 +79,10 @@ public class TeleOpCompCopied extends LinearOpMode {
                 rightServo.setPower(0.0);
             }
 
-            if (gamepad1.a){
+            if (gamepad2.a){
                 launchMotor.setPower(0.8);
             }
-            else if (gamepad1.b){
+            else if (gamepad2.b){
                 launchMotor.setPower(0.0);
             }
         }
