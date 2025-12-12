@@ -80,7 +80,7 @@ public class TeleOpCompCopied extends LinearOpMode {
             }
 
             if (gamepad2.a){
-                launchMotor.setPower(0.9);
+                launchMotor.setPower(0.7);
             }
             else if (gamepad2.b){
                 launchMotor.setPower(0.0);
