@@ -1,11 +1,13 @@
 package org.firstinspires.ftc.teamcode.Y2526.lp;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 
 @TeleOp(name = "Li refactor")
-public class  LPRefactor extends LinearOpMode {
+@Disabled
+public class LPRefactor extends LinearOpMode {
 
     @Override
     public void runOpMode() {
