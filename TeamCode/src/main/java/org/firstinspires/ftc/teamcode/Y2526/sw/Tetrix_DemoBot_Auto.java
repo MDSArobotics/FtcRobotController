@@ -30,7 +30,6 @@
 package org.firstinspires.ftc.teamcode.Y2526.sw;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -60,9 +59,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@Autonomous(name="TetrixDemoBot Auto Drive By Encoder")
-@Disabled
-public class TetrixDemoBotAutoDriveByEncoder_Linear extends LinearOpMode {
+@Autonomous(name="Tetrix_DemoBot_AutoDriveByEncoder", group="TetrixDemoBot")
+public class Tetrix_DemoBot_Auto extends LinearOpMode {
 
     /* Declare OpMode members. */
     private DcMotor         leftDrive   = null;

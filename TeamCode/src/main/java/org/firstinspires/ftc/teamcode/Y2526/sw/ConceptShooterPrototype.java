@@ -46,9 +46,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@TeleOp(name="ShooterPrototype")
+@TeleOp(name="Concept: ShooterPrototype", group="Concept")
 @Disabled
-public class ShooterMechanism extends LinearOpMode {
+public class ConceptShooterPrototype extends LinearOpMode {
 
     /* Declare OpMode members. */
     public DcMotor  flywheelMotor   = null;

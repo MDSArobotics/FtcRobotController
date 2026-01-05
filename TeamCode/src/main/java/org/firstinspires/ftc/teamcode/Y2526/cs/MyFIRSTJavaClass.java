@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @Disabled
 @TeleOp(name = "Cailin hearts" )
+@Disabled
 public class MyFIRSTJavaClass extends LinearOpMode {
 
 

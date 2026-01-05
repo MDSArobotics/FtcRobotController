@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @Disabled
 @TeleOp(name = "Li refactor")
+@Disabled
 public class LPRefactor extends LinearOpMode {
 
     @Override
