@@ -1,9 +1,10 @@
 package org.firstinspires.ftc.teamcode.Y2526.cs;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-
+@Disabled
 @TeleOp(name = "Cailin hearts" )
 public class MyFIRSTJavaClass extends LinearOpMode {
 
@@ -23,3 +24,4 @@ public class MyFIRSTJavaClass extends LinearOpMode {
 
 }
 
+//hi

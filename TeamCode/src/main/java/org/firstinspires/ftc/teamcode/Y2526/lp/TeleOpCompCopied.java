@@ -8,18 +8,18 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp (name = "Te Li Op", group = "Linear OpMode")
+@TeleOp (name = "Te Li Op", group = "Te")
 public class TeleOpCompCopied extends LinearOpMode {
     private DcMotor leftMotor = null;
     private DcMotor rightMotor = null;
     private DcMotor launchMotor = null;
     private CRServo rightServo = null;
     private CRServo leftServo = null;
-    private double launchPosSet = 0.0;
-    private final int launchOne = 0;
-    private final int launchTwo = 10;
-    private final int launchThree = 600;
-    private final int launchFour = 5;
+//    private double launchPosSet = 0.0;
+//    private final int launchOne = 0;
+//    private final int launchTwo = 10;
+//    private final int launchThree = 600;
+//    private final int launchFour = 5;
 
     public void runOpMode() {
 
@@ -61,8 +61,8 @@ public class TeleOpCompCopied extends LinearOpMode {
 
             double drive = gamepad1.left_stick_y;
             double turn  =  -gamepad1.right_stick_x;
-            leftPower    = Range.clip(drive + turn, -0.6, 0.6) ;
-            rightPower   = Range.clip(drive - turn, -0.6, 0.6) ;
+            leftPower    = Range.clip(drive + turn, -0.8, 0.8) ;
+            rightPower   = Range.clip(drive - turn, -0.8, 0.8) ;
             leftMotor.setPower(leftPower);
             rightMotor.setPower(rightPower);
 
@@ -80,7 +80,7 @@ public class TeleOpCompCopied extends LinearOpMode {
             }
 
             if (gamepad2.a){
-                launchMotor.setPower(0.7);
+                launchMotor.setPower(0.6);
             }
             else if (gamepad2.b){
                 launchMotor.setPower(0.0);
