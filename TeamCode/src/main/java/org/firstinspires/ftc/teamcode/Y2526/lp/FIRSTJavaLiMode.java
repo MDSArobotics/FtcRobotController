@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @Disabled
 @TeleOp(name = "Joslin rules")
-@Disabled
 public class FIRSTJavaLiMode extends LinearOpMode {
 
     @Override

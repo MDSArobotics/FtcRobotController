@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Disabled
 @TeleOp(name = "Cailin hearts" )
-@Disabled
 public class MyFIRSTJavaClass extends LinearOpMode {
 
 
