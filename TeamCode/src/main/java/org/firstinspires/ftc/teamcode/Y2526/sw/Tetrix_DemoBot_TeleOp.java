@@ -21,8 +21,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
-@Disabled
 @TeleOp(name = "TetrixDemoBot_TeleOp")
+@Disabled
 public class Tetrix_DemoBot_TeleOp extends LinearOpMode {
 
     // Motors

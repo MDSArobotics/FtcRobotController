@@ -30,6 +30,7 @@
 package org.firstinspires.ftc.teamcode.Y2526.ek;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -61,7 +62,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @Autonomous(name="EkRobot", group="Far Launch")
-//@Disabled
+@Disabled
 public class EkAutonomous extends LinearOpMode {
 
     /* Declare OpMode members. */

@@ -58,7 +58,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Since the dynamics of a launcher wheel system varies greatly from those of most other FTC mechanisms,
  * we will also need to adjust the "PIDF" coefficients with some that are a better fit for our application.
  */
-@Disabled
 @TeleOp(name = "StarterBotTeleop", group = "StarterBot")
 //@Disabled
 public class StarterBotTeleop extends OpMode {
@@ -138,8 +137,8 @@ public class StarterBotTeleop extends OpMode {
          * Note: The settings here assume direct drive on left and right wheels. Gear
          * Reduction or 90 Deg drives may require direction flips
          */
-        leftDrive.setDirection(DcMotor.Direction.REVERSE);
-        rightDrive.setDirection(DcMotor.Direction.FORWARD);
+        leftDrive.setDirection(DcMotor.Direction.FORWARD);
+        rightDrive.setDirection(DcMotor.Direction.REVERSE);
 
         /*
          * Here we set our launcher to the RUN_USING_ENCODER runmode.
@@ -176,6 +175,13 @@ public class StarterBotTeleop extends OpMode {
         /*
          * Tell the driver that initialization is complete.
          */
+        telemetry.addData("Gamepad 1:", "");
+        telemetry.addData(" Left Joystick: ", "Up/Down Drive Forward/Backward");
+        telemetry.addData(" Right Joystick", "Left/Right Turn Left/Right");
+        telemetry.addData("Gamepad 2:", "");
+        telemetry.addData(" Button Y", "Start Launch Motor");
+        telemetry.addData(" Button B", "Stop Launch Motor");
+        telemetry.addData(" Right Bumper", "Launch Artifact");
         telemetry.addData("Status", "Initialized");
     }
 
@@ -207,7 +213,7 @@ public class StarterBotTeleop extends OpMode {
          * both motors work to rotate the robot. Combinations of these inputs can be used to create
          * more complex maneuvers.
          */
-        arcadeDrive(gamepad1.left_stick_y, -gamepad1.right_stick_x);
+        arcadeDrive(-gamepad1.left_stick_y, -gamepad1.right_stick_x);
 
         /*
          * Here we give the user control of the speed of the launcher motor without automatically
@@ -227,11 +233,18 @@ public class StarterBotTeleop extends OpMode {
         /*
          * Show the state and motor powers
          */
-        telemetry.addData("State", launchState);
-        telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
-        telemetry.addData("motorSpeed", launcher.getVelocity());
-        telemetry.addData("rms", rightPower);
-        telemetry.addData("lms", leftPower);
+        telemetry.addData("Gamepad 1:", "");
+        telemetry.addData(" Left Joystick: ", "Up/Down Drive Forward/Backward");
+        telemetry.addData(" Right Joystick", "Left/Right Turn Left/Right");
+        telemetry.addData("Gamepad 2:", "");
+        telemetry.addData(" Button Y", "Start Launch Motor");
+        telemetry.addData(" Button B", "Stop Launch Motor");
+        telemetry.addData(" Right Bumper", "Launch Artifact");
+        telemetry.addData("Status", "Running");
+        telemetry.addData(" Launch State", launchState);
+        telemetry.addData(" Drive Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
+        telemetry.addData(" Launch Motor Settings", "Target Velocity (%.2f), Minimum Velocity (%.2f)", LAUNCHER_TARGET_VELOCITY,LAUNCHER_MIN_VELOCITY );
+        telemetry.addData(" Launch Motor Speed", launcher.getVelocity());
 
 
     }
