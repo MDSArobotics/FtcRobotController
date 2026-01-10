@@ -36,8 +36,6 @@ public class TeleOpCompCopied extends LinearOpMode {
         rightServo = hardwareMap.get(CRServo.class, "right_feeder");
 
         // drive motors
-        leftMotor.setDirection(DcMotor.Direction.FORWARD);
-        rightMotor.setDirection(DcMotor.Direction.REVERSE);
         leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         rightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
@@ -50,7 +48,10 @@ public class TeleOpCompCopied extends LinearOpMode {
 
         waitForStart();
         while (opModeIsActive()){
-
+            if (gamepad1.dpadUpWasPressed()) {
+                leftMotor.setDirection(DcMotor.Direction.FORWARD);
+                rightMotor.setDirection(DcMotor.Direction.REVERSE);
+            }
             // idk what this does but I'd rather have it and not need it than need it and not have it
 //            launchMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 //            launchMotor.setTargetPosition(launchOne);
