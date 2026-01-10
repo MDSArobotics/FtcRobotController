@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp (name = "Te Cailin Op", group = "Te")
+@TeleOp (name = "Te Li Op", group = "Te")
 public class TeleOpCompCopied extends LinearOpMode {
     private DcMotor leftMotor = null;
     private DcMotor rightMotor = null;
@@ -47,22 +47,32 @@ public class TeleOpCompCopied extends LinearOpMode {
             double leftPower;
             double rightPower;
 
-            if (gamepad1.dpadUpWasPressed()) {
+//            if (gamepad1.dpadUpWasPressed()) {
+//
+//                double drive = gamepad1.left_stick_y;
+//                double turn  =  -gamepad1.right_stick_x;
+//
+//                leftMotor.setDirection(DcMotor.Direction.FORWARD);
+//                rightMotor.setDirection(DcMotor.Direction.REVERSE);
+//
+//                leftPower    = Range.clip(drive + turn, -0.8, 0.8) ;
+//                rightPower   = Range.clip(drive - turn, -0.8, 0.8) ;
+//
+//            }
+            if (gamepad1.dpadDownWasPressed()){
 
-                double drive = gamepad1.left_stick_y;
+                double drive = -gamepad1.left_stick_y;
                 double turn  =  -gamepad1.right_stick_x;
 
-                leftMotor.setDirection(DcMotor.Direction.FORWARD);
-                rightMotor.setDirection(DcMotor.Direction.REVERSE);
+                leftMotor.setDirection(DcMotor.Direction.REVERSE);
+                rightMotor.setDirection(DcMotor.Direction.FORWARD);
 
                 leftPower    = Range.clip(drive + turn, -0.8, 0.8) ;
                 rightPower   = Range.clip(drive - turn, -0.8, 0.8) ;
 
-                leftMotor.setPower(leftPower);
-                rightMotor.setPower(rightPower);
-
             }
-            else if (gamepad1.dpadDownWasPressed()){
+
+            else {
 
                 double drive = -gamepad1.left_stick_y;
                 double turn  =  -gamepad1.right_stick_x;
@@ -73,10 +83,10 @@ public class TeleOpCompCopied extends LinearOpMode {
                 leftPower    = Range.clip(drive + turn, -0.8, 0.8) ;
                 rightPower   = Range.clip(drive - turn, -0.8, 0.8) ;
 
-                leftMotor.setPower(leftPower);
-                rightMotor.setPower(rightPower);
-
             }
+
+            leftMotor.setPower(leftPower);
+            rightMotor.setPower(rightPower);
 
             if (gamepad2.y){
                 leftServo.setPower(1.0);
@@ -92,7 +102,7 @@ public class TeleOpCompCopied extends LinearOpMode {
             }
 
             if (gamepad2.a){
-                launchMotor.setPower(0.4);
+                launchMotor.setPower(0.6);
             }
             else if (gamepad2.b){
                 launchMotor.setPower(0.0);

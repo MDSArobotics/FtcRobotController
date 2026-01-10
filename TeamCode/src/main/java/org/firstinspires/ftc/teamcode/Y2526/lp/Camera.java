@@ -18,7 +18,9 @@ public class Camera extends LinearOpMode {
     private AprilTagProcessor aprilTag;
     private VisionPortal visionPortal;
 
-    @Override
+    waitForStart();
+
+    //@Override
     public void runOpMode() {
 
         initAprilTag();
