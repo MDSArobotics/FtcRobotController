@@ -49,24 +49,29 @@ public class TeleOpCompCopied extends LinearOpMode {
         waitForStart();
         while (opModeIsActive()){
 
-            if (gamepad1.dpadUpWasPressed()) {
-                leftMotor.setDirection(DcMotor.Direction.FORWARD);
-                rightMotor.setDirection(DcMotor.Direction.REVERSE);
-            }
-            else if (gamepad1.dpadDownWasPressed()){
-                leftMotor.setDirection(DcMotor.Direction.REVERSE);
-                rightMotor.setDirection(DcMotor.Direction.FORWARD);
-            }
-
             double leftPower;
             double rightPower;
 
             double drive = gamepad1.left_stick_y;
             double turn  =  -gamepad1.right_stick_x;
-            leftPower    = Range.clip(drive + turn, -0.8, 0.8) ;
-            rightPower   = Range.clip(drive - turn, -0.8, 0.8) ;
-            leftMotor.setPower(leftPower);
-            rightMotor.setPower(rightPower);
+
+            if (gamepad1.dpadUpWasPressed()) {
+                leftMotor.setDirection(DcMotor.Direction.FORWARD);
+                rightMotor.setDirection(DcMotor.Direction.REVERSE);
+                leftPower    = Range.clip(drive + turn, -0.8, 0.8) ;
+                rightPower   = Range.clip(drive - turn, -0.8, 0.8) ;
+                leftMotor.setPower(leftPower);
+                rightMotor.setPower(rightPower);
+            }
+            else if (gamepad1.dpadDownWasPressed()){
+                leftMotor.setDirection(DcMotor.Direction.REVERSE);
+                rightMotor.setDirection(DcMotor.Direction.FORWARD);
+                leftPower    = Range.clip(drive + turn, -0.8, 0.8) ;
+                rightPower   = Range.clip(drive - turn, -0.8, 0.8) ;
+                leftMotor.setPower(leftPower);
+                rightMotor.setPower(rightPower);
+            }
+
 
             if (gamepad2.y){
                 leftServo.setPower(1.0);
