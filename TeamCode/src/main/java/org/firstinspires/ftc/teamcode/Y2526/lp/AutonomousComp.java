@@ -74,8 +74,8 @@ public class AutonomousComp extends LinearOpMode {
 
         waitForStart();
 
-        encoderDrive(TURN_SPEED, 12, 12, 1.0);
-        encoderDrive(DRIVE_SPEED, 15.0, 15.0, 5.0);
+        encoderDrive(TURN_SPEED, 25, 25, 1.0);
+        encoderDrive(DRIVE_SPEED, 30.0, 30.0, 5.0);
 
         telemetry.addData("First", "Complete");
         telemetry.update();

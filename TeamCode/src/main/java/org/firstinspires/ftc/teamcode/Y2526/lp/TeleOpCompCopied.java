@@ -48,24 +48,30 @@ public class TeleOpCompCopied extends LinearOpMode {
 
         waitForStart();
         while (opModeIsActive()){
-            if (gamepad1.dpadUpWasPressed()) {
-                leftMotor.setDirection(DcMotor.Direction.FORWARD);
-                rightMotor.setDirection(DcMotor.Direction.REVERSE);
-            }
-            // idk what this does but I'd rather have it and not need it than need it and not have it
-//            launchMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-//            launchMotor.setTargetPosition(launchOne);
-//            launchMotor.setPower(1.0);
-//            launchMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
             double leftPower;
             double rightPower;
 
             double drive = gamepad1.left_stick_y;
             double turn  =  -gamepad1.right_stick_x;
-            leftPower    = Range.clip(drive + turn, -0.8, 0.8) ;
-            rightPower   = Range.clip(drive - turn, -0.8, 0.8) ;
-            leftMotor.setPower(leftPower);
-            rightMotor.setPower(rightPower);
+
+            if (gamepad1.dpadUpWasPressed()) {
+                leftMotor.setDirection(DcMotor.Direction.FORWARD);
+                rightMotor.setDirection(DcMotor.Direction.REVERSE);
+                leftPower    = Range.clip(drive + turn, -0.8, 0.8) ;
+                rightPower   = Range.clip(drive - turn, -0.8, 0.8) ;
+                leftMotor.setPower(leftPower);
+                rightMotor.setPower(rightPower);
+            }
+            else if (gamepad1.dpadDownWasPressed()){
+                leftMotor.setDirection(DcMotor.Direction.REVERSE);
+                rightMotor.setDirection(DcMotor.Direction.FORWARD);
+                leftPower    = Range.clip(drive + turn, -0.8, 0.8) ;
+                rightPower   = Range.clip(drive - turn, -0.8, 0.8) ;
+                leftMotor.setPower(leftPower);
+                rightMotor.setPower(rightPower);
+            }
+
 
             if (gamepad2.y){
                 leftServo.setPower(1.0);
