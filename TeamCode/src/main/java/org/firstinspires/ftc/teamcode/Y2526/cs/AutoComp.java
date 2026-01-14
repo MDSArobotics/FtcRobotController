@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="LpRobot", group="Near Launch")
+@Autonomous(name="LpRobot1", group="Near Launch")
 public class AutoComp extends LinearOpMode {
 
     private DcMotor leftDrive   = null;
