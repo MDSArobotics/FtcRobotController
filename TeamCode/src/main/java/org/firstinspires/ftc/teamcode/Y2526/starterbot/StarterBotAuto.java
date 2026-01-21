@@ -182,7 +182,7 @@ public class StarterBotAuto extends OpMode
          * Later in our code, we will progress through the state machine by moving to other enum members.
          * We do the same for our launcher state machine, setting it to IDLE before we use it later.
          */
-        autonomousState = AutonomousState.LAUNCH;
+        autonomousState = AutonomousState.DRIVING_AWAY_FROM_GOAL;
         launchState = LaunchState.IDLE;
 
 
@@ -298,7 +298,7 @@ public class StarterBotAuto extends OpMode
          */
         switch (autonomousState){
             /*
-             * Since the first state of our auto is LAUNCH, this is the first "case" we encounter.
+             * Since the first state of our auto is DRIVING AWAY FROM LINE, this is the first "case" we encounter.
              * This case is very simple. We call our .launch() function with "true" in the parameter.
              * This "true" value informs our launch function that we'd like to start the process of
              * firing a shot. We will call this function with a "false" in the next case. This
@@ -307,7 +307,16 @@ public class StarterBotAuto extends OpMode
              */
             case LAUNCH:
                 launch(true);
-                autonomousState = AutonomousState.WAIT_FOR_LAUNCH;
+
+//                autonomousState = AutonomousState.WAIT_FOR_LAUNCH;
+
+                telemetry.addData("AutoState", autonomousState);
+                telemetry.addData("LauncherState", launchState);
+
+
+
+                telemetry.update();
+
                 break;
 
             case WAIT_FOR_LAUNCH:
@@ -330,9 +339,10 @@ public class StarterBotAuto extends OpMode
                         leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                         rightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                         launcher.setVelocity(0);
-                        autonomousState = AutonomousState.DRIVING_AWAY_FROM_GOAL;
+//                        autonomousState = AutonomousState.DRIVING_AWAY_FROM_GOAL;
                     }
                 }
+                autonomousState = AutonomousState.DRIVING_OFF_LINE;
                 break;
 
             case DRIVING_AWAY_FROM_GOAL:
@@ -341,11 +351,16 @@ public class StarterBotAuto extends OpMode
                  * the robot has been within a tolerance of the target position for "holdSeconds."
                  * Once the function returns "true" we reset the encoders again and move on.
                  */
-                if(drive(DRIVE_SPEED, -4, DistanceUnit.INCH, 1)){
+                if(drive(DRIVE_SPEED, -46, DistanceUnit.INCH, 5)){
                     leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     rightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     autonomousState = AutonomousState.ROTATING;
                 }
+                autonomousState = AutonomousState.WAIT_FOR_LAUNCH;
+                ;
+
+
+
                 break;
 
             case ROTATING:
@@ -366,6 +381,7 @@ public class StarterBotAuto extends OpMode
                 if(drive(DRIVE_SPEED, -26, DistanceUnit.INCH, 1)){
                     autonomousState = AutonomousState.COMPLETE;
                 }
+                autonomousState = AutonomousState.COMPLETE;
                 break;
         }
 
