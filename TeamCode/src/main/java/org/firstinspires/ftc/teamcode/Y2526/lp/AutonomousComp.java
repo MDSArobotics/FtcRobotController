@@ -35,7 +35,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="LpRobot", group="Near Launch")
+@Autonomous(name="LpRobotJan12", group="Near Launch")
 public class AutonomousComp extends LinearOpMode {
 
     private DcMotor         leftDrive   = null;
@@ -74,8 +74,8 @@ public class AutonomousComp extends LinearOpMode {
 
         waitForStart();
 
-        encoderDrive(TURN_SPEED, 25, 25, 1.0);
-        encoderDrive(DRIVE_SPEED, 30.0, 30.0, 5.0);
+        encoderDrive(TURN_SPEED, 15, 15, 1.0);
+        encoderDrive(DRIVE_SPEED, 20.0, 20.0, 5.0);
 
         telemetry.addData("First", "Complete");
         telemetry.update();

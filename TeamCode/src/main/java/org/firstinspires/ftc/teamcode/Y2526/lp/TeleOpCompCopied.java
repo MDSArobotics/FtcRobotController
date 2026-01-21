@@ -15,6 +15,8 @@ public class TeleOpCompCopied extends LinearOpMode {
     private DcMotor launchMotor = null;
     private CRServo rightServo = null;
     private CRServo leftServo = null;
+    public long LastAct = 1000000000;
+    public long OtherTime = 1000000000;
 
     public void runOpMode() {
 
@@ -42,6 +44,11 @@ public class TeleOpCompCopied extends LinearOpMode {
         launchMotor.setPower(0.0);
 
         waitForStart();
+        telemetry.addData("meowmeowmeow", 0);
+        telemetry.update();
+        LastAct = System.currentTimeMillis();
+        sleep(1000);
+
         while (opModeIsActive()){
 
             double leftPower;
@@ -74,7 +81,7 @@ public class TeleOpCompCopied extends LinearOpMode {
 
             else {
 
-                double drive = -gamepad1.left_stick_y;
+                double drive = gamepad1.left_stick_y;
                 double turn  =  -gamepad1.right_stick_x;
 
                 leftMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -93,8 +100,12 @@ public class TeleOpCompCopied extends LinearOpMode {
                 rightServo.setPower(-1.0);
             }
             else if (gamepad2.x){
-                leftServo.setPower(-1.0);
-                rightServo.setPower(1.0);
+                OtherTime=LastAct+500;
+                if (System.currentTimeMillis() >= OtherTime) {
+                    leftServo.setPower(-1.0);
+                    rightServo.setPower(1.0);
+                    LastAct = System.currentTimeMillis();
+                }
             }
             else{
                 leftServo.setPower(0.0);
@@ -103,6 +114,7 @@ public class TeleOpCompCopied extends LinearOpMode {
 
             if (gamepad2.a){
                 launchMotor.setPower(0.6);
+                LastAct = System.currentTimeMillis();
             }
             else if (gamepad2.b){
                 launchMotor.setPower(0.0);
