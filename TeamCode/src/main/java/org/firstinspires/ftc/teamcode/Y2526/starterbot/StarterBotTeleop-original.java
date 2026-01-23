@@ -30,7 +30,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.Y2526.StarterBotCode.StarterBotCode.Java;
+package org.firstinspires.ftc.teamcode.Y2526.starterbot
 
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
 
@@ -58,9 +58,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * we will also need to adjust the "PIDF" coefficients with some that are a better fit for our application.
  */
 
-@TeleOp(name = "StarterBotTeleop", group = "StarterBot")
+@TeleOp(name = "StarterBotTeleop_original", group = "StarterBot")
 //@Disabled
-public class StarterBotTeleop extends OpMode {
+public class StarterBotTeleop_original extends OpMode {
     final double FEED_TIME_SECONDS = 0.20; //Original feed time 0.2. The feeder servos run this long when a shot is requested.
     final double STOP_SPEED = 0.0; //We send this power to the servos when we want them to stop.
     final double FULL_SPEED = 1.0;
