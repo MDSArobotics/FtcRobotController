@@ -30,7 +30,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.Y2526.StarterBotCode.StarterBotCode.Java;
+package org.firstinspires.ftc.teamcode.Y2526.starterbot
 
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
 
@@ -63,9 +63,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
  * main robot "loop," continuously checking for conditions that allow us to move to the next step.
  */
 
-@Autonomous(name="StarterBotAuto", group="StarterBot")
+@Autonomous(name="StarterBotAuto_original", group="StarterBot")
 //@Disabled
-public class StarterBotAuto extends OpMode
+public class StarterBotAuto_original extends OpMode
 {
 
     final double FEED_TIME = 0.20; //Original feed time 0.2. The feeder servos run this long when a shot is requested.
