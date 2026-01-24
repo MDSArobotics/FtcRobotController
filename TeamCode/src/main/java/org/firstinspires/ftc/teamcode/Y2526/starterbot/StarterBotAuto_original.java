@@ -183,7 +183,8 @@ public class StarterBotAuto_original extends OpMode
          * Later in our code, we will progress through the state machine by moving to other enum members.
          * We do the same for our launcher state machine, setting it to IDLE before we use it later.
          */
-        autonomousState = AutonomousState.LAUNCH;
+        //autonomousState = AutonomousState.LAUNCH;
+        autonomousState = AutonomousState.DRIVING_AWAY_FROM_GOAL;
         launchState = LaunchState.IDLE;
 
 
@@ -342,8 +343,7 @@ public class StarterBotAuto_original extends OpMode
                  * the robot has been within a tolerance of the target position for "holdSeconds."
                  * Once the function returns "true" we reset the encoders again and move on.
                  */
-                // Modified distance from -4 to 4 inches to correct for robot orientation
-                if(drive(DRIVE_SPEED, 4, DistanceUnit.INCH, 1)){
+                if(drive(DRIVE_SPEED, -4, DistanceUnit.INCH, 1)){
                     leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     rightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     autonomousState = AutonomousState.ROTATING;
@@ -353,9 +353,9 @@ public class StarterBotAuto_original extends OpMode
             // Swapped rotation angles for alliances to correct for robot orientation
             case ROTATING:
                 if(alliance == Alliance.RED){
-                    robotRotationAngle = -45; //45
+                    robotRotationAngle = 45;
                 } else if (alliance == Alliance.BLUE){
-                    robotRotationAngle = 45;  //-45
+                    robotRotationAngle = -45;
                 }
 
                 if(rotate(ROTATE_SPEED, robotRotationAngle, AngleUnit.DEGREES,1)){
@@ -364,9 +364,8 @@ public class StarterBotAuto_original extends OpMode
                     autonomousState = AutonomousState.DRIVING_OFF_LINE;
                 }
                 break;
-            // Modified distance from -26 to 26 inches to correct for robot orientation
             case DRIVING_OFF_LINE:
-                if(drive(DRIVE_SPEED, 26, DistanceUnit.INCH, 1)){
+                if(drive(DRIVE_SPEED, -26, DistanceUnit.INCH, 1)){
                     autonomousState = AutonomousState.COMPLETE;
                 }
                 break;
