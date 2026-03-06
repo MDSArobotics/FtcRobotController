@@ -16,7 +16,7 @@ public class CailinHi extends LinearOpMode {
         // The OpMode is now active (after pressing Play)
         while (opModeIsActive()) {
             // Add the "Hello World" message and any other data
-            telemetry.addData("Message", "LONG LIVE THE LI NATALIA WAR");
+            telemetry.addData("Mesage", "LONG LIVE THE LI NATALIA WAR");
             telemetry.addData("turkey", "The ramp that desire doesn't know");
             telemetry.update(); // Update the display with new data
             sleep(10000);
