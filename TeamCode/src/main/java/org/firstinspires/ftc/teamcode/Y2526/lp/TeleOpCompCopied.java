@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Y2526.lp;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
@@ -9,6 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 @TeleOp (name = "Te Li Op", group = "Te")
+@Disabled
 public class TeleOpCompCopied extends LinearOpMode {
     private DcMotor leftMotor = null;
     private DcMotor rightMotor = null;

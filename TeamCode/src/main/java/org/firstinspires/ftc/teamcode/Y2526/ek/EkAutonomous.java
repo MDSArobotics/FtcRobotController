@@ -62,6 +62,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @Autonomous(name="EkRobot", group="Far Launch")
+@Disabled
 public class EkAutonomous extends LinearOpMode {
 
     /* Declare OpMode members. */

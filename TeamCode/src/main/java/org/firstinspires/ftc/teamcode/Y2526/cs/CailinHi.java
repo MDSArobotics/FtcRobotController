@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode.Y2526.cs;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @Autonomous(name="NataliOp", group="Cailautonomous")
+@Disabled
 public class CailinHi extends LinearOpMode {
 
     @Override

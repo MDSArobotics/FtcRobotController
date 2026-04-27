@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Y2526.cs;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -15,6 +16,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="LpRobot1", group="Near Launch")
+@Disabled
 public class AutoComp extends LinearOpMode {
 
     private DcMotor leftDrive   = null;
