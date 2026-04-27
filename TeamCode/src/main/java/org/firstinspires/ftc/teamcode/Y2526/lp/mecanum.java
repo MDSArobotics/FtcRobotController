@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Y2526.lp;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IMU;
 
@@ -14,16 +15,24 @@ public class mecanum extends OpMode {
     DcMotor frontRightDrive;
     DcMotor backLeftDrive;
     DcMotor backRightDrive;
+    private DcMotor launchMotor = null;
+    private CRServo rightServo = null;
+    private CRServo leftServo = null;
 
     // get the current direction the robot is facing
     IMU imu;
 
     @Override
     public void init() {
+
+
         frontLeftDrive = hardwareMap.get(DcMotor.class, "front_left");
         frontRightDrive = hardwareMap.get(DcMotor.class, "front_right");
         backLeftDrive = hardwareMap.get(DcMotor.class, "back_left");
         backRightDrive = hardwareMap.get(DcMotor.class, "back_right");
+        launchMotor = hardwareMap.get(DcMotor.class, "launcher");
+        leftServo = hardwareMap.get(CRServo.class, "left_feeder");
+        rightServo = hardwareMap.get(CRServo.class, "right_feeder");
 
         // We set the left motors in reverse which is needed for drive trains where the left
         // motors are opposite to the right ones.
@@ -36,6 +45,12 @@ public class mecanum extends OpMode {
         frontRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        launchMotor.setDirection(DcMotor.Direction.FORWARD);
+        launchMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        launchMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        launchMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        launchMotor.setPower(0.0);
 
         imu = hardwareMap.get(IMU.class, "imu");
         // This needs to be changed to match the orientation on your robot
@@ -115,6 +130,26 @@ public class mecanum extends OpMode {
         frontRightDrive.setPower(maxSpeed * (frontRightPower / maxPower));
         backLeftDrive.setPower(maxSpeed * (backLeftPower / maxPower));
         backRightDrive.setPower(maxSpeed * (backRightPower / maxPower));
+
+        if (gamepad2.y){
+            leftServo.setPower(1.0);
+            rightServo.setPower(-1.0);
+        }
+        else if (gamepad2.x){
+                leftServo.setPower(-1.0);
+                rightServo.setPower(1.0);
+        }
+        else{
+            leftServo.setPower(0.0);
+            rightServo.setPower(0.0);
+        }
+
+        if (gamepad2.a){
+            launchMotor.setPower(0.6);
+        }
+        else if (gamepad2.b){
+            launchMotor.setPower(0.0);
+        }
     }
 
 }
