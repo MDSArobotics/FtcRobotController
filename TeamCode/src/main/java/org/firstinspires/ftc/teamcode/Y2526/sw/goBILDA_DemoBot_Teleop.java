@@ -34,6 +34,7 @@ package org.firstinspires.ftc.teamcode.Y2526.sw;
 
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
@@ -59,6 +60,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @TeleOp(name = "goBILDA_DemoBot_Teleop", group = "goBILDA_DemoBot")
+@Disabled
 public class goBILDA_DemoBot_Teleop extends OpMode {
     final double FEED_TIME_SECONDS = 0.50; //Original feed time 0.2. The feeder servos run this long when a shot is requested.
     final double STOP_SPEED = 0.0; //We send this power to the servos when we want them to stop.

@@ -35,6 +35,7 @@ package org.firstinspires.ftc.teamcode.Y2526.sw;
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -63,6 +64,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
  */
 
 @Autonomous(name="goBILDA_DemoBot_AutoDriveByEncoder", group="goBILDA_DemoBot")
+@Disabled
 public class goBILDA_DemoBot_Auto extends OpMode
 {
 
