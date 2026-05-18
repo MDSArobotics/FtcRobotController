@@ -16,31 +16,22 @@ package org.firstinspires.ftc.teamcode.Y2526.sw;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
-@TeleOp(name = "TetrixDemoBot_TeleOp")
-public class Tetrix_DemoBot_TeleOp extends LinearOpMode {
+@TeleOp(name = "TetrixBot_TeleOp")
+@Disabled
+public class TetrixBot_TeleOp extends LinearOpMode {
 
     // Motors
     final ElapsedTime runtime = new ElapsedTime();
     public DcMotor  leftDrive   = null; //the left drivetrain motor
     public DcMotor  rightDrive  = null; //the right drivetrain motor
-    public DcMotor  launchMotor = null; //the flywheel motor
-
-    // Servos
-    public CRServo CR_servoLeft = null; //left CR servo pushes artifact towards flywheel
-    public CRServo CR_servoRight = null; //right CR servo pushes artifact towards flywheel
-    public Servo servoGate = null; //the gate servo pushes artifact into flywheel
 
     // Sensors
     /** The colorSensor field will contain a reference to our color sensor hardware object */
     //public NormalizedColorSensor colorSensorLeft = null;
     //public NormalizedColorSensor colorSensorRight = null;
-    //public DistanceSensor sensorDistance = null;
-    //public TouchSensor sensorTouch = null;
 
     @Override
     public void runOpMode() {
@@ -54,7 +45,6 @@ public class Tetrix_DemoBot_TeleOp extends LinearOpMode {
         // Get references to motor objects
         leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
-        launchMotor = hardwareMap.get(DcMotor.class, "launch");
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
@@ -62,10 +52,12 @@ public class Tetrix_DemoBot_TeleOp extends LinearOpMode {
         leftDrive.setDirection(DcMotor.Direction.REVERSE);
         rightDrive.setDirection(DcMotor.Direction.FORWARD);
 
-        // Get references to servo objects.
-        CR_servoRight = hardwareMap.get(CRServo.class, "CR_servo_right");
-        CR_servoLeft = hardwareMap.get(CRServo.class, "CR_servo_left");
-        servoGate = hardwareMap.get(Servo.class, "servo_left");
+        /* Setting zeroPowerBehavior to BRAKE enables a "brake mode". This causes the motor to slow down
+        much faster when it is coasting. This creates a much more controllable drivetrain. As the robot
+        stops much quicker. */
+
+        leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Get a references to  sensor objects.
         // It's recommended to use NormalizedColorSensor over ColorSensor, because NormalizedColorSensor
@@ -73,9 +65,7 @@ public class Tetrix_DemoBot_TeleOp extends LinearOpMode {
         // dependent on the specific sensor you're using.
         //colorSensorLeft = hardwareMap.get(NormalizedColorSensor.class, "sensor_color_left");
         //colorSensorRight = hardwareMap.get(NormalizedColorSensor.class, "sensor_color_right");
-        //sensorDistance = hardwareMap.get(DistanceSensor.class, "sensor_distance");
-        //sensorTouch = hardwareMap.get(TouchSensor.class, "sensor_touch");
-        // To do: Add functionality to the color and distance sensors
+        // To do: Add functionality to the color sensors
 
         // Wait for the game to start (driver presses START)
         waitForStart();
@@ -87,8 +77,6 @@ public class Tetrix_DemoBot_TeleOp extends LinearOpMode {
             // Setup a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
-            double launchPower;
-            double CR_servoPower;
 
             // Drive the bot in "Point of View" POV Mode versus tank drive
             // POV Mode uses left stick to go forward, and right stick to turn.
@@ -102,32 +90,13 @@ public class Tetrix_DemoBot_TeleOp extends LinearOpMode {
             leftDrive.setPower(leftPower);
             rightDrive.setPower(rightPower);
 
-            // Press right trigger to run flywheel launch motor forward at full speed (power = +1.0)
             // Press left trigger to run the CR servos to move the artifact towards the flywheel
             // Press the right bumper to move the gate servo forward to push artifact into flywheel and launch
             // Press the left bumper to move the gate servo back to original position
 
-
-            if(gamepad1.left_bumper){
-                servoGate.setPosition(0.3);
-            }
-            if(gamepad1.right_bumper){
-                servoGate.setPosition(0.7);
-            }
-
-            launchPower = gamepad1.right_trigger;
-            launchMotor.setPower(launchPower);
-
-            CR_servoPower = gamepad1.left_trigger;
-            CR_servoLeft.setPower(CR_servoPower);
-            CR_servoRight.setPower(CR_servoPower);
-
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Drive Motors Power", "left (%.2f), right (%.2f)", leftPower, rightPower);
-            telemetry.addData("Launch Motor Power",  "%.2f", launchPower);
-            telemetry.addData("CR Servos Power",  "%.2f", CR_servoPower);
-            telemetry.addData("Gate servos Position",  "%.2f", servoGate.getPosition());
             telemetry.update();
         }
     }

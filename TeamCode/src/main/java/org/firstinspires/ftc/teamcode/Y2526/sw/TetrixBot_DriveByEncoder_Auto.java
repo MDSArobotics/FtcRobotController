@@ -60,9 +60,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Tetrix_DemoBot_AutoDriveByEncoder", group="TetrixDemoBot")
+@Autonomous(name="TetrixBot_DriveByEncoder_Auto", group="TetrixBot")
 @Disabled
-public class Tetrix_DemoBot_Auto extends LinearOpMode {
+public class TetrixBot_DriveByEncoder_Auto extends LinearOpMode {
 
     /* Declare OpMode members. */
     private DcMotor         leftDrive   = null;

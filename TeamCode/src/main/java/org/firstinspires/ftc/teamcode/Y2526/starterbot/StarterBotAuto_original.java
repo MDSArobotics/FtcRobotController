@@ -87,7 +87,7 @@ public class StarterBotAuto_original extends OpMode
     final double TIME_BETWEEN_SHOTS = 2;
 
     /*
-     * Here we capture a few variables used in driving the robot. DRIVE_SPEED and ROTATE_SPEED
+     * Here we capture a few variables used in driving the robot. driveSpeed and ROTATE_SPEED
      * are from 0-1, with 1 being full speed. Encoder ticks per revolution is specific to the motor
      * ratio that we use in the kit; if you're using a different motor, this value can be found on
      * the product page for the motor you're using.
