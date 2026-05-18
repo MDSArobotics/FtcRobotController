@@ -10,7 +10,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 @TeleOp (name = "Te Li Op", group = "Te")
-@Disabled
 public class TeleOpCompCopied extends LinearOpMode {
     private DcMotor leftMotor = null;
     private DcMotor rightMotor = null;
