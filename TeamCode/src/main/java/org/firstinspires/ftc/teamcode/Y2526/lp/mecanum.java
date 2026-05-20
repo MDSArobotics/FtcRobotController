@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IMU;
+import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
@@ -151,6 +152,17 @@ public class mecanum extends OpMode {
         }
         else if (gamepad2.b){
             launchMotor.setPower(0.0);
+        }
+    }
+
+    public void armAndClaw(){
+        double armPower;
+        double armDrive = gamepad1.left_stick_y;
+        armPower    = Range.clip(armDrive, -0.8, 0.8) ;
+        launchMotor.setPower(armPower);
+        if (gamepad2.left_bumper){
+            leftServo.setPower(-1.0);
+            rightServo.setPower(1.0);
         }
     }
 
