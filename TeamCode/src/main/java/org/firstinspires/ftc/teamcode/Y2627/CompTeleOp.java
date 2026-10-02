@@ -13,7 +13,11 @@ public class CompTeleOp extends LinearOpMode {
     public void runOpMode(){
 
         waitForStart();
+        telemetry.addData("Starting code", 0);
+        telemetry.update();
         while (opModeIsActive()){
+            telemetry.addData("Running code",0);
+            telemetry.update();
 
         }
 

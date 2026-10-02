@@ -16,9 +16,25 @@ public class ShootingAuto extends LinearOpMode {
 
     @Override
     public void runOpMode(){
-        //set motor behaviors here - NOT DONE
+
+        leftMotor  = hardwareMap.get(DcMotor.class, "left_drive");
+        rightMotor = hardwareMap.get(DcMotor.class, "right_drive");
+
+        leftMotor.setDirection(DcMotor.Direction.FORWARD);
+        rightMotor.setDirection(DcMotor.Direction.REVERSE);
+
+        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         waitForStart();
+        telemetry.addData("Starting code",0);
+        telemetry.update();
         while (opModeIsActive()){
+            telemetry.addData("Running code", 0);
+            telemetry.update();
             //          move
             //          turn
             //          align
@@ -26,5 +42,5 @@ public class ShootingAuto extends LinearOpMode {
             //          move again to park MAYBE
         }
     }
-    }
+}
 
