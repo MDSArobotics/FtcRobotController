@@ -74,7 +74,7 @@ public class TetrixBot_TeleOp extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            // Setup a variable for each drive wheel to save power level for telemetry
+            // Set up a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
 
@@ -95,7 +95,7 @@ public class TetrixBot_TeleOp extends LinearOpMode {
             // Press the left bumper to move the gate servo back to original position
 
             // Show the elapsed game time and wheel power.
-            telemetry.addData("Status", "Run Time: " + runtime.toString());
+            telemetry.addData("Status", "Run Time: " + runtime);
             telemetry.addData("Drive Motors Power", "left (%.2f), right (%.2f)", leftPower, rightPower);
             telemetry.update();
         }
