@@ -8,7 +8,7 @@ should already have been completed:
 Android Studio has been installed and configured.
 Git has been installed and configured in Android Studio.
 The MDSArobotics/FtcRobotController repository has been cloned.
-The hardware needed for the tutorial have been configured in a 
+The hardware needed for the tutorial has been configured in a 
 Sailbots programming resources kit:
 *        REV control hub (with built-in IMU as "imu")
 *        12V battery and power switch
