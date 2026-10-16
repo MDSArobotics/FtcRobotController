@@ -20,8 +20,8 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name = "TetrixBot_Intake_TeleOp")
-//@Disabled
+@TeleOp(name = "TetrixBot_Intake_TeleOp", group="Demo Robot")
+@Disabled
 public class TetrixBot_Intake_TeleOp extends LinearOpMode {
 
     // Motors
