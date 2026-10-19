@@ -4,8 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
 @TeleOp (name = "Live With Love", group = "Linear OpMode")
+@Disabled
 public class TeleOpComp extends LinearOpMode {
 
     boolean launchMotorRunning = false;

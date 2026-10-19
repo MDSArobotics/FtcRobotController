@@ -1,14 +1,14 @@
 package org.firstinspires.ftc.teamcode.Y2526.lp;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IMU;
 
-import java.time.LocalTime;
-
 @Autonomous(name = "Nataliauto", group = "AHHHH")
+@Disabled
 public class Auto20267 extends LinearOpMode {
     DcMotor frontLeftDrive;
     DcMotor frontRightDrive;

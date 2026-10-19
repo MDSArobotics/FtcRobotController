@@ -1,11 +1,12 @@
 package org.firstinspires.ftc.teamcode.Y2627;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Autonomous(name="Shooter Auto", group="Start Position")
-
+@Disabled
 public class ShootingAuto extends LinearOpMode {
 
     //declare motors and servos here - NOT DONE

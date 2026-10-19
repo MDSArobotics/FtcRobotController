@@ -1,6 +1,6 @@
 Open the Android Studio Programming Tutorial web page from FTC Docs at 
  
-https://ftc-docs.firstinspires.org/en/latest/programming\_resources/android\_studio\_java/Android-Studio-Tutorial.html
+https://ftc-docs.firstinspires.org/en/latest/programming_resources/android_studio_java/Android-Studio-Tutorial.html
 
 This tutorial covers more than is really needed to start writing your first OpMode
 in Android Studio. At this point, the following steps covered in the tutorial
@@ -30,7 +30,7 @@ Begin the tutorial at "Creating and Running an OpMode" and follow these
 instructions and complete all the steps to control a DC motor.  Continue 
 with "Controlling a Servo" and finish with "Using Sensors."
 
-Future Sailbot tutorial modules will add using the web camera for robot vision, using the 
+Future Sailbot tutorial modules will add the web camera for robot vision, the 
 Inertial Measurement Unit (IMU) for measuring the robot's orientation and movement, and other
 more advanced programming topics.
 

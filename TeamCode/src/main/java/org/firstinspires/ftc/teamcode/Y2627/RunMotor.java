@@ -1,11 +1,12 @@
 package org.firstinspires.ftc.teamcode.Y2627;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @TeleOp(name = "run intake motor",group = "test")
+@Disabled
 public class RunMotor extends LinearOpMode {
     private DcMotor intakeMotor = null;
 

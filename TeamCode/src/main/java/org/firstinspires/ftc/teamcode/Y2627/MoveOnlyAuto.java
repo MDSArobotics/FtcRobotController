@@ -1,11 +1,13 @@
 package org.firstinspires.ftc.teamcode.Y2627;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="Mover Auto", group="Start Position")
+@Disabled
 public class MoveOnlyAuto extends LinearOpMode {
 
     //declare motors and servos here - NOT DONE

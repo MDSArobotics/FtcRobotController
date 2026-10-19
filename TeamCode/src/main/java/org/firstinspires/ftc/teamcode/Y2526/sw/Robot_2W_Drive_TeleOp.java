@@ -13,6 +13,7 @@
 
 package org.firstinspires.ftc.teamcode.Y2526.sw;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -21,7 +22,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name = "Robot_2W_Drive_TeleOp")
-//@Disabled
+@Disabled
 public class Robot_2W_Drive_TeleOp extends LinearOpMode {
     // Motors
     final ElapsedTime runtime = new ElapsedTime();
