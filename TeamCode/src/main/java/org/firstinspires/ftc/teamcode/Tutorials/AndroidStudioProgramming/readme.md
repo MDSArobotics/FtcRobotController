@@ -20,18 +20,17 @@ Sailbots programming resources kit:
 *        REV driver station
 *        REV PS4 gamepad
 
-To begin the tutorial, right-click on the Tutorials.AndroidStudioProgramming 
-package, and select "New" at the top of the pop-up menu, then select "Package"
-Create a new package with your initials for organizing your class files.
+To begin the tutorial, skip directly to the "Writing an Op Mode" section in the 
+tutorial document and start at "Creating and Running an OpMode." Follow these instructions to
+write your first Java OpMode and control a DC motor.  Continue with "Controlling a Servo" and 
+finish with "Using Sensors."
 
-Skip directly to the "Writing an Op Mode" section in the tutorial document.
-Skip the "Enabling Developer Options (Smartphone Robot Controller)" step.
-Begin the tutorial at "Creating and Running an OpMode" and follow these 
-instructions and complete all the steps to control a DC motor.  Continue 
-with "Controlling a Servo" and finish with "Using Sensors."
+To begin coding, right-click on the Tutorials.AndroidStudioProgramming
+package, and select "New" at the top of the pop-up menu, then select "Java Class"
+to create your class file.
 
 Multiple users may complete this tutorial so it will be helpful to choose a unique 
-name for your class file rather than the name "MyFirstJavaOpMode" indicated in 
+name for your class file rather calling it "MyFirstJavaOpMode" as shown in 
 the tutorial instructions. The instructions also ask you to reuse the same class file
 as you add code to control a motor, servo, and sensors.  The solution package includes
 a sequence of files with the accumulated code at each step of the tutorial for 
