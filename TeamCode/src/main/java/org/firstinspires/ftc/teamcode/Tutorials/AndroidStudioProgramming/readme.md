@@ -27,7 +27,9 @@ finish with "Using Sensors."
 
 To begin coding, right-click on the Tutorials.AndroidStudioProgramming
 package, and select "New" at the top of the pop-up menu, then select "Java Class"
-to create your class file.
+to create your class file. A pop-up window will ask if you want to add the file to 
+Git. Answer yes. This is the first step to adding your code to the team's software 
+repository.
 
 Multiple users may complete this tutorial so it will be helpful to choose a unique 
 name for your class file rather calling it "MyFirstJavaOpMode" as shown in 
