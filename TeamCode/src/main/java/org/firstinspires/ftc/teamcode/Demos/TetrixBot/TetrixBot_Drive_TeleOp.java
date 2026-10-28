@@ -7,6 +7,7 @@
 
 package org.firstinspires.ftc.teamcode.Demos.TetrixBot;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -14,7 +15,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name = "TetrixBot_Drive", group = "Demos")
-//@Disabled
+@Disabled
 public class TetrixBot_Drive_TeleOp extends LinearOpMode {
 
     // Motors
