@@ -102,7 +102,6 @@ public class Tetrix_Arm_TeleOp extends LinearOpMode {
             }
 
             // Show the elapsed game time and arm positions
-            telemetry.addData("*  Bumper Left/Right ", "Drive Speed Down/Up");
             telemetry.addData("*  Trigger Left/Right ", "Arm Position Down/Up");
             telemetry.addData("*  DPAD Left/Right", "Claw Closed/Open");
             telemetry.addData("*  DPAD Down/Up", "Wrist Down/Up");

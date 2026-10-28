@@ -2,9 +2,21 @@ Open the Android Studio Programming Tutorial web page from FTC Docs at
  
 https://ftc-docs.firstinspires.org/en/latest/programming_resources/android_studio_java/Android-Studio-Tutorial.html
 
-This tutorial covers more than is really needed to start writing your first OpMode in Android 
-Studio. At this point, the following steps covered in the tutorial should already have been 
-completed:
+The tutorial objectives are to
+*     Create a new Java class file in Android Studio
+*     Write a simple OpMode program that
+*       Accepts user input from a gamepad
+*       Controls a motor
+*       Controls a servo
+*       Reads input from a touch sensor
+*       reads input from a color/distance sensor
+*       sends text (telemetry) to the user's driver station
+*     Save code (commit and push) to the team's GitHub software repository
+*     Build code and download to the robot
+
+The tutorial instructions cover more than is really needed to start writing your first OpMode in 
+Android Studio. At this point, the following steps should already have been completed and may be 
+skipped in the instructions:
     Android Studio has been installed and configured on your laptop.
     Git has been installed and configured in Android Studio.
     The MDSArobotics/FtcRobotController repository has been cloned.
@@ -18,18 +30,6 @@ completed:
 *        Web camera (for use with future tutorials)
 *        REV driver station
 *        REV PS4 gamepad
-
-The tutorial objectives are to
-*     Create a new Java class file in Android Studio
-*     Write a simple OpMode program that
-*       Accepts user input from a gamepad
-*       Controls a motor
-*       Controls a servo
-*       Reads input from a touch sensor
-*       reads input from a color/distance sensor
-*       sends text (telemetry) to the user's driver station
-*     Save code (commit and push) to the team's GitHub software repository
-*     Build code and download to the robot
 
 To begin the tutorial, skip directly to the "Writing an Op Mode" section in the tutorial document 
 and start at "Creating and Running an OpMode." Follow these instructions to write your first Java 
@@ -46,11 +46,11 @@ Your new class file will be added to the tutorial package and opened in the edit
 continue to use the same class file as you add more code to control a motor, servo, and sensors. 
 
 The initial version of the JavaOpMode in the tutorial creates five private member variables for
-hardware and assigns values to them using the hardwareMap method, even though they will not be
-used until later in the tutorial.  It would be better practice to add these only when needed, e.g.
-only declare the servo when you plan to add code for controlling the servo.  Otherwise, the code
-is cluttered with unused references and becomes confusing. The solution package includes a sequence 
-of files with the accumulated code at each step of the tutorial for reference.
+hardware right from the start and assigns values to them using the hardwareMap method, even though 
+they will not be used until later.  It would be better practice to add these only when needed, 
+e.g. only declare the servo when you plan to add code for controlling the servo.  Otherwise, the 
+code is cluttered with unused references and becomes confusing. The solution package includes a 
+sequence of files with the accumulated code at each step of the tutorial for reference.
 
 To save your code, upload it to the team's software repository.  
 Note that Android Studio will automatically save your changes as you work, however, these changes 
