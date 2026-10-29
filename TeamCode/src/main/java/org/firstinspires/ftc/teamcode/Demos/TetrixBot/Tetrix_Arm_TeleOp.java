@@ -27,9 +27,9 @@ public class Tetrix_Arm_TeleOp extends LinearOpMode {
     public double ARM_SPEED = 0.4;
 
     // wrist positions.
-    final double UP   = 0.6;
-    final double DOWN = 0.35;
-    final double PARKED = 0.95;
+    final double UP   = 0.5;
+    final double DOWN = 0.1;
+    final double PARKED = 0.9;
 
     // Claw gripper positions.
     final double CLOSED = 0.20; // 18 degrees
@@ -38,8 +38,8 @@ public class Tetrix_Arm_TeleOp extends LinearOpMode {
     @Override
     public void runOpMode() {
         telemetry.addData("*  Trigger Left/Right ", "Arm Position Down/Up");
-        telemetry.addData("*  DPAD Left/Right", "Claw Closed/Open");
-        telemetry.addData("*  DPAD Down/Up", "Wrist Down/Up");
+        telemetry.addData("*  Bumper Left/Right", "Claw Closed/Open");
+        telemetry.addData("*  Button A/Y/X or B", "Wrist Down/Up/Park");
         telemetry.addData("Status", "Run Time: " + runtime);
         telemetry.update();
 
@@ -80,16 +80,21 @@ public class Tetrix_Arm_TeleOp extends LinearOpMode {
             previousGamepad1.copy(currentGamepad1);
             currentGamepad1.copy(gamepad1);
 
-            if (gamepad1.dpad_up){
+            if(gamepad1.y) {
+                // move to 0 degrees.
                 wrist.setPosition(UP);
-            }
-            else if (gamepad1.dpad_down){
+            } else if (gamepad1.x || gamepad1.b) {
+                // move to 90 degrees.
+                wrist.setPosition(PARKED);
+            } else if (gamepad1.a) {
+                // move to 180 degrees.
                 wrist.setPosition(DOWN);
             }
-            if (gamepad1.dpad_left){
+
+            if (gamepad1.leftBumperWasPressed()){
                 claw.setPosition(CLOSED);
             }
-            else if (gamepad1.dpad_right){
+            else if (gamepad1.rightBumperWasPressed()){
                 claw.setPosition(OPEN);
             }
 
@@ -103,8 +108,8 @@ public class Tetrix_Arm_TeleOp extends LinearOpMode {
 
             // Show the elapsed game time and arm positions
             telemetry.addData("*  Trigger Left/Right ", "Arm Position Down/Up");
-            telemetry.addData("*  DPAD Left/Right", "Claw Closed/Open");
-            telemetry.addData("*  DPAD Down/Up", "Wrist Down/Up");
+            telemetry.addData("*  Bumper Left/Right", "Claw Closed/Open");
+            telemetry.addData("*  Button A/Y/X or B", "Wrist Down/Up/Park");
             telemetry.addData("Arm Motor Speed", "arm (%.2f)", ARM_SPEED);
             telemetry.addData("Status", "Run Time: " + runtime);
             telemetry.update();
