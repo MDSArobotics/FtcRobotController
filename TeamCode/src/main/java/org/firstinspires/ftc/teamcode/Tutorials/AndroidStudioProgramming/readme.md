@@ -1,6 +1,3 @@
-Open the Android Studio Programming Tutorial web page from FTC Docs at 
- 
-https://ftc-docs.firstinspires.org/en/latest/programming_resources/android_studio_java/Android-Studio-Tutorial.html
 
 The tutorial objectives are to
 *     Create a new Java class file in Android Studio
@@ -13,6 +10,9 @@ The tutorial objectives are to
 *       sends text (telemetry) to the user's driver station
 *     Save code (commit and push) to the team's GitHub software repository
 *     Build code and download to the robot
+
+Open the Android Studio Programming Tutorial web page from FTC Docs at
+https://ftc-docs.firstinspires.org/en/latest/programming_resources/android_studio_java/Android-Studio-Tutorial.html
 
 The tutorial instructions cover more than is really needed to start writing your first OpMode in 
 Android Studio. At this point, the following steps should already have been completed and may be 
