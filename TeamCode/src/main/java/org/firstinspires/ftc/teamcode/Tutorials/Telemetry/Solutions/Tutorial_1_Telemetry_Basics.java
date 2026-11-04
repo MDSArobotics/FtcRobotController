@@ -1,54 +1,73 @@
+/* Tutorial 1 Telemetry Basics Goals:
+  1.  Understand the purpose of the "package" statement and how it relates to directory structure
+  2.  Explain the "extends" keyword and behavior
+  3.  What is the source of the "telemetry" variable?
+  4.  What type of variable (class) is the "telemetry" object?
+  5.  What's the difference between "telemetry" and "Telemetry" in this program?
+  6.  What does "waitForStart" and "while (opModeIsActive())" do?
+  7.  What purpose does the @Teleop annotation serve?
+  8.  Explain what the "import" statement does.
+
+Step by Step:
+      DO NOT cut and paste the program. Retype it (it's short; you won't die)
+      Change the class name from Tutorial1_Telemetry to something more meaningful
+      Remember to keep the class name and file name consistent.
+      Place the program in a directory of your choosing; don't create a mess in the TeamCode directory
+      As you're retyping the program, use Android Studio code completion to import necessary
+        libraries, change file names, and resolve errors as necessary.
+      Download the code to the robot and run the program.
+      Be sure to understand what the code is doing vis-a-vis the information being displayed on the
+      robot controller.
+Notes:
+    This class provides an introduction on:
+    - Creating a teleoperated (driver controlled) program for the FTC robot by creating a class
+    which *extends* LinearOpMode
+    - Intruduces the use of messages via the Telemetry object using the built-in *telemetry*
+    variable inherited from the *extends LinearOpMode* syntax
+ */
 package org.firstinspires.ftc.teamcode.Tutorials.Telemetry.Solutions;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
 import java.util.concurrent.ThreadLocalRandom;
 
 @TeleOp(name = "Tutorial 1: Telemetry Basics", group="Tutorials")
 @Disabled
 public class Tutorial_1_Telemetry_Basics extends LinearOpMode {
-/* This Class provides an introduction on;
-    - Creating a teleoperated (driver controlled) program for the FTC robot by
-        creating a class which *extends* Linear OpMode
-    - Introduces the use of formatted messages via the Telemetry object using the
-        built-in *telemetry* variable inherited from the *extends LinearOpMode* syntax
- */
 
-    // Create and initialize variables for use by the Telemetry object
-    Telemetry.Item rightMotorStatus = telemetry.addData("right motor",0);
-    Telemetry.Item leftMotorStatus = telemetry.addData("left motor",0);
-    Telemetry.Item timeStatus = telemetry.addData("time",System.currentTimeMillis());
-
+    //  What does @Override do?
+    //  Is runOpMode mandatory?
+    //  If so, why?
     @Override
-    public void runOpMode() throws InterruptedException {
-        long now = System.currentTimeMillis();
+    public void runOpMode() {
 
-        telemetry.setAutoClear(false);
+        telemetry.addData("Status", "Initialized - waiting for operator to press start");
         telemetry.update();
 
-        //Wait for the game to start (driver presses PLAY)
+        // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        // Run until the end of the match (driver presses STOP)
-        while (opModeIsActive()){
+        long now = System.currentTimeMillis();
+        telemetry.addData("Starting at ", now);
+        telemetry.update();
+        sleep(500);
+
+        // run until the end of the match (driver presses STOP)
+        while (opModeIsActive()) {
             now = System.currentTimeMillis();
-            timeStatus.setValue(now);
+            int naptime = ThreadLocalRandom.current().nextInt(200, 1000);
 
-            if (now%2 == 0){
-                rightMotorStatus.setValue(8);
-                leftMotorStatus.setValue(6);
-            }
-            else {
-                rightMotorStatus.setValue(9);
-                leftMotorStatus.setValue(13);
-            }
+            telemetry.addData("Snooze ", "Sleeping for " + naptime + " milliseconds");
             telemetry.update();
-            sleep (ThreadLocalRandom.current().nextInt(200,1000));
-        }
 
+            sleep(naptime);
+
+
+        }
+        telemetry.addData("End", "Program terminated by operator.");
     }
 }
+
+
