@@ -4,9 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name = "Solution_MyFirstJavaOpMode", group = "Tutorial")
+@TeleOp(name = "Step_1_MyFirstJavaOpMode", group = "Tutorial")
 @Disabled
-public class Solution_MyFirstJavaOpMode extends LinearOpMode {
+public class Step_1_MyFirstJavaOpMode extends LinearOpMode {
 
     @Override
     public void runOpMode() {

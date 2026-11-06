@@ -4,17 +4,15 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-@TeleOp(name = "Solution_AddTouchSensor", group = "Tutorial")
+@TeleOp(name = "Step_4_AddDistanceSensor", group = "Tutorial")
 @Disabled
-public class Solution_AddTouchSensor extends LinearOpMode {
+public class Step_4_AddDistanceSensor extends LinearOpMode {
     private DcMotor motorTest;
-    private DigitalChannel digitalTouch;
     private DistanceSensor sensorColorRange;
     private Servo servoTest;
 
@@ -22,12 +20,8 @@ public class Solution_AddTouchSensor extends LinearOpMode {
     public void runOpMode() {
 
         motorTest = hardwareMap.get(DcMotor.class, "motorTest");
-        digitalTouch = hardwareMap.get(DigitalChannel.class, "digitalTouch");
         sensorColorRange = hardwareMap.get(DistanceSensor.class, "sensorColorRange");
         servoTest = hardwareMap.get(Servo.class, "servoTest");
-
-        // set digital channel to input mode.
-        digitalTouch.setMode(DigitalChannel.Mode.INPUT);
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -49,14 +43,6 @@ public class Solution_AddTouchSensor extends LinearOpMode {
             } else if (gamepad1.a) {
                 // move to 180 degrees.
                 servoTest.setPosition(1);
-            }
-            // is button pressed?
-            if (digitalTouch.getState() == false) {
-                // button is pressed.
-                telemetry.addData("Button", "PRESSED");
-            } else {
-                // button is not pressed.
-                telemetry.addData("Button", "NOT PRESSED");
             }
             telemetry.addData("Servo Position", servoTest.getPosition());
             telemetry.addData("Target Power", tgtPower);
