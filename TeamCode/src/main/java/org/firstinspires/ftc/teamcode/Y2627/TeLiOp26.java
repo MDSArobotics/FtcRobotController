@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.Y2627;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -30,7 +29,7 @@ public class TeLiOp26 extends LinearOpMode {
             double leftPower;
             double rightPower;
 
-            double drive = gamepad1.left_stick_y;
+            double drive = -gamepad1.left_stick_y;
             double turn  =  gamepad1.right_stick_x;
 
             leftMotor.setDirection(DcMotor.Direction.REVERSE);
