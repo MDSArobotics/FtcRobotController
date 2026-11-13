@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Y2627;
+package org.firstinspires.ftc.teamcode.Y2627.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
